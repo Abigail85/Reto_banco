@@ -18,23 +18,8 @@ public class AgendaLaCita {
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarOpcionDeMenu.paraTramites(),
-                            SeleccionarSubSede.paraAgendarLaCita());
-                    actor.attemptsTo(
-                            // Diligenciar formulario solicitante
-                            Click.on("#select2-tipoDocumento-container"),
-                            Enter.theValue("CEDULA CIUDADANIA").into("//input[@class='select2-search__field']"),
-                            Click.on("//li[contains(text(),'CEDULA CIUDADANIA')]"),
-                            Enter.theValue("1017204547").into("#numeroDocumento"),
-                            Click.on("#nombres"),
-                            Enter.theValue("Esteban").into("#nombres"),
-                            Enter.theValue("Andres").into("#segundoNombre"),
-                            Enter.theValue("Villa").into("#apellidos"),
-                            Enter.theValue("Villada").into("#segundoApellido"),
-                            Enter.theValue("julian@gmail.com").into("#correo"),
-                            Enter.theValue("3146834990").into("#telefono"),
-                            Enter.theValue("calle medellin").into("#direccion"),
-                            Click.on("//button[contains(text(),'Continuar')]")
-                    );
+                            SeleccionarSubSede.paraAgendarLaCita(),
+                            DiligenciarFormulario.delSolicitante());
                     actor.attemptsTo(
                             //Agregar servicio
                             Click.on("//button[contains(text(),'Agregar servicio')]"),
