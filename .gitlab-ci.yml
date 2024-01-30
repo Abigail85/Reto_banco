@@ -27,5 +27,5 @@ test-automation:
   - gradle -version # Verificar la versión de Gradle
   - grep -rl 'USER_GA' ./ | xargs sed -i 's/USER_GA/'"$USER_GA"'/g'
   - grep -rl 'PASSWORD_GA' ./ | xargs sed -i 's/PASSWORD_GA/'"$PASSWORD_GA"'/g'
-  #script:
-  #  - gradle clean test -Dproperties=serenity.conf aggregate
+  script:
+    - gradle clean test -Dproperties=serenity.conf aggregate
