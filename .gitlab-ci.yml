@@ -5,10 +5,18 @@ include:
   file:
     - static-code-analysis/sonar-java.yml
 
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
 stages:
   - codequality
   - security_tests
   - test
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
 
 sast:
   stage: security_tests
@@ -21,8 +29,9 @@ sast:
 
 test-automation:
   stage: test
-  image: gradle:alpine # Utiliza la imagen oficial de Gradle con la versión "latest"
+  image: gradle:jdk11 # Utiliza la imagen oficial de Gradle con la versión "latest"
   before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
   - java -version # Verificar la versión de Java
   - gradle -version # Verificar la versión de Gradle
   - grep -rl 'USER_GA' ./ | xargs sed -i 's/USER_GA/'"$USER_GA"'/g'
