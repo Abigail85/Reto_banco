@@ -25,7 +25,7 @@ public class AgregarServicio {
                             Click.on(DDL_TIPO_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue("Cambio de matricula").into(TXT_SERVICO_REQURIDO),
                             Click.on(LST_SERVICIO),
-                            Enter.theValue("AAA123").into(TXT_PLACA_DEL_VEHICULO),
+                            Enter.theValue("AAA122").into(TXT_PLACA_DEL_VEHICULO),
                             Click.on(BTN_AGREGAR_SERVICIO_REQUERIDO),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );

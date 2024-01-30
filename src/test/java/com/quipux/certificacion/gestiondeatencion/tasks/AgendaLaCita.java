@@ -1,6 +1,7 @@
 package com.quipux.certificacion.gestiondeatencion.tasks;
 
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarFecha;
+import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -15,8 +16,8 @@ public class AgendaLaCita {
                             SeleccionarSubSede.paraAgendarLaCita(),
                             DiligenciarFormulario.delSolicitante(),
                             AgregarServicio.requerido(),
-                            SeleccionarFecha.disponible()
-                            );
+                            SeleccionarFecha.disponible(),
+                            SeleccionarHorario.disponible());
                 }
         );
     }
