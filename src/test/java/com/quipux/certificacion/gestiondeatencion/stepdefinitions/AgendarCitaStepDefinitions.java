@@ -17,7 +17,7 @@ public class AgendarCitaStepDefinitions {
 
     @Cuando("quiere agendar una cita")
     public void quiereAgendarUnaCita() {
-        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicio());
+        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido());
     }
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")

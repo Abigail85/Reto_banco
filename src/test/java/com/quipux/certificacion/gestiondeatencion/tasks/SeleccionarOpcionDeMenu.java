@@ -11,8 +11,12 @@ public class SeleccionarOpcionDeMenu {
 
     public static Performable paraTramites() {
         return Task.where("{0} selecciona la opción del menu",
-                Click.on(LST_GESTION_DE_LA_ATENCION),
-                Click.on(LST_AGENDAR_CITAS)
+                actor -> {
+                    actor.attemptsTo(
+                            Click.on(LST_GESTION_DE_LA_ATENCION),
+                            Click.on(LST_AGENDAR_CITAS)
+                    );
+                }
         );
     }
 }
