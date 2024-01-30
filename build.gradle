@@ -1,0 +1,52 @@
+plugins {
+    id "net.serenity-bdd.serenity-gradle-plugin" version "4.0.30"
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+}
+
+defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+ext {
+    serenityCoreVersion = '4.0.30'
+    seleniumVersion = '4.17.0'
+    junitVersion = '5.10.0'
+    assertJVersion = '3.22.0'
+    slf4jVersion = '2.0.11'
+}
+
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+            "org.seleniumhq.selenium:selenium-java:${seleniumVersion}",
+            "org.junit.vintage:junit-vintage-engine:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "org.slf4j:slf4j-simple:${slf4jVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
