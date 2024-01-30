@@ -1,0 +1,31 @@
+include:
+- template: Security/SAST.gitlab-ci.yml
+- project: 'devops-templates/general-templates'
+  ref: 'development'
+  file:
+    - static-code-analysis/sonar-java.yml
+
+stages:
+  - codequality
+  - security_tests
+  - test
+
+sast:
+  stage: security_tests
+  tags:
+    - gitlab-runner-docker
+  artifacts:
+    reports:
+      sast: gl-sast-report.json
+    paths: [gl-sast-report.json]
+
+test-automation:
+  stage: test
+  image: gradle:latest # Utiliza la imagen oficial de Gradle con la versión "latest"
+  before_script:
+  - java -version # Verificar la versión de Java
+  - gradle -version # Verificar la versión de Gradle
+  - grep -rl 'USER_GA' ./ | xargs sed -i 's/USER_GA/'"$USER_GA"'/g'
+  - grep -rl 'PASSWORD_GA' ./ | xargs sed -i 's/PASSWORD_GA/'"$PASSWORD_GA"'/g'
+  script:
+    - gradle clean test -Dproperties=serenity.conf aggregate
