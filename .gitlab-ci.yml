@@ -13,11 +13,6 @@ stages:
   - security_tests
   - test
 
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
-
 sast:
   stage: security_tests
   tags:
@@ -37,3 +32,5 @@ test-automation:
     - grep -rl 'PASSWORD_GA' ./ | xargs sed -i 's/PASSWORD_GA/'"$PASSWORD_GA"'/g'
   script:
     - gradle clean test -Dproperties=serenity.conf aggregate
+  tags:
+    - gitlab-runner-docker
