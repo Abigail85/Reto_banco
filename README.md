@@ -9,6 +9,7 @@ En este readme, se explicarán las diferentes configuraciones necesarias para qu
 - IDE
 - JDK 11 o superior
 - Gradle 8.5
+- Navegador web Chrome (ultima versión)
 
 ## Variables de entorno ##
 
