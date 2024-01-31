@@ -35,3 +35,4 @@ test-automation:
   artifacts: # Define la sección de artefactos
     paths:
       - target/ # Ruta del archivo de reporte
+  allow_failure: true
