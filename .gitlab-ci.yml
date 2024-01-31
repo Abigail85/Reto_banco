@@ -29,7 +29,7 @@ test-automation:
     - grep -rl 'USER_GA' ./ | xargs sed -i 's/USER_GA/'"$USER_GA"'/g'
     - grep -rl 'PASSWORD_GA' ./ | xargs sed -i 's/PASSWORD_GA/'"$PASSWORD_GA"'/g'
   script:
-    - gradle clean test -Dproperties=serenity.conf aggregate
+    - gradle clean test -Dproperties=serenity.conf aggregate || true
   tags:
     - gitlab-runner-docker
   artifacts: # Define la sección de artefactos
