@@ -9,32 +9,59 @@ En este readme, se explicarán las diferentes configuraciones necesarias para qu
 - IDE
 - JDK 11 o superior
 - Gradle 8.5
-- Navegador web Chrome (ultima versión)
 
 ## Variables de entorno ##
 
 Configurar las variables de entorno que se encuentran en el archivo env.properties
+
 ```
 USUARIO_GA
 CONTRASENA_GA
 ```
 
-## Ejecución de pruebas ##
+## Ejecución de Pruebas ##
 
-###### **Ejecutar Todos los Runner**
+### **Localmente**
 
-```
+Sigue estos pasos para ejecutar las pruebas localmente:
+
+1. Clona este repositorio en tu máquina local.
+2. Navega hasta el directorio del proyecto clonado.
+3. Configura las variables de entorno en el archivo `env.properties` según sea necesario.
+4. Abre una terminal en el directorio del proyecto.
+5. Ejecuta los siguientes comandos:
+
+#### **Ejecutar Todos los Runners**
+
+```bash
 gradle clean test -Dproperties=serenity.conf aggregate
 ```
 
-###### **Ejecutar Runner Especifico**
+#### **Ejecutar Runner Especifico**
 
-```
+```bash
 gradle clean test --tests nombreClaseRunner -Dproperties=serenity.conf aggregate
 ```
 
-###### **Ejecutar Escenario Especifico por Etiqueta**
+#### **Ejecutar Escenario Especifico por Etiqueta**
 
-```
+```bash
 gradle clean test -Dproperties=serenity.conf -Dcucumber.filter.tags="@nombreEtiqueta" aggregate
 ```
+
+#### **Ejecutar en Docker**
+
+Si deseas ejecutar las pruebas en Docker, puedes utilizar la imagen jhonacevedor/quipux-test-automation. Sigue estos pasos:
+
+1. Asegúrate de tener Docker instalado en tu máquina local.
+2. descargar la imagen docker
+
+```bash
+docker pull jhonacevedor/quipux-test-automation 
+```
+
+3. Ejecuta las pruebas
+```bash
+docker run -it --rm jhonacevedor/quipux-test-automation /bin/bash
+```
+Dentro del contenedor, podrás ejecutar los comandos de Gradle mencionados anteriormente para ejecutar las pruebas.
