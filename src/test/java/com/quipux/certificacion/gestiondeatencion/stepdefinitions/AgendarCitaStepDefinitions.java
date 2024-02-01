@@ -22,6 +22,10 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(tipoDeServicio));
     }
 
+    @Cuando("agenda una cita para realizar varios tramites")
+    public void agendaUnaCitaParaRealizarVariosTramites() {
+    }
+
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
