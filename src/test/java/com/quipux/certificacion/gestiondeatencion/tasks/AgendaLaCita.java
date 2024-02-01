@@ -5,6 +5,10 @@ import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorari
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Scroll;
+
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.BTN_GUARDAR;
 
 public class AgendaLaCita {
 
@@ -17,7 +21,9 @@ public class AgendaLaCita {
                             DiligenciarFormulario.delSolicitante(),
                             AgregarServicio.requerido(),
                             SeleccionarFecha.disponible(),
-                            SeleccionarHorario.disponible());
+                            SeleccionarHorario.disponible(),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR));
                 }
         );
     }

@@ -6,8 +6,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.BTN_AGENDAR_CITA;
-import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.DDL_SUB_SEDE;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SeleccionarSubSede implements Performable {
@@ -18,8 +17,8 @@ public class SeleccionarSubSede implements Performable {
         actor.attemptsTo(
                 Click.on(BTN_AGENDAR_CITA),
                 Click.on(DDL_SUB_SEDE),
-                Enter.theValue("sh subsede 1").into("//input[@class='select2-search__field']"),
-                Click.on("//li[contains(text(),'sh subsede 1')]")
+                Enter.theValue("sh subsede 1").into(TXT_INGRESAR_SUB_SEDE),
+                Click.on(LST_SUB_SEDE)
         );
     }
 

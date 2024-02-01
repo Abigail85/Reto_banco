@@ -8,6 +8,8 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import java.time.Duration;
 
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.*;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.ComunesPage.IMG_CARGANDO;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotPresent;
 
@@ -17,12 +19,11 @@ public class SeleccionarFecha implements Performable {
     @Step("{0} selecciona la fecha disponible")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on("#agendarCitaDatePicker"),
-                Click.on("(//th[@class='datepicker-switch'])[1]"),
-                Click.on("//span[text()='Ene']"),
-                Click.on("//td[@class='day' and text()='31']"),
-                WaitUntil.the("(//img[@class='img-fluid'])[1]", isNotPresent()).forNoMoreThan(Duration.ofMillis(3000)),
-                Click.on("(//span[@class='select2-selection select2-selection--single'])[3]")
+                Click.on(BTN_CALENDARIO),
+                Click.on(BTN_AGENDAR_MES),
+                Click.on(BTN_MES_REQUERIDO),
+                Click.on(BTN_DIA_REQURIDO),
+                WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
         );
     }
 

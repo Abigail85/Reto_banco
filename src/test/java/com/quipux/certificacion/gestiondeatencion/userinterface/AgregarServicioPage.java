@@ -19,7 +19,7 @@ public class AgregarServicioPage {
     public static final Target LST_SERVICIO = Target.the("Servicio solicitado")
             .locatedBy("//li[contains(text(),'Cambio de matricula')]");
     public static final Target TXT_PLACA_DEL_VEHICULO = Target.the("Campo para ingresa la placa del vehículo")
-            .located(By.id("placa"));
+            .locatedBy("(//input[@id='placa'])[2]");
     public static final Target BTN_AGREGAR_SERVICIO_REQUERIDO = Target.the("")
             .locatedBy("//div[@class='modal-footer']/child::button[contains(text(),'Agregar')]");
 }

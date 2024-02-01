@@ -22,5 +22,6 @@ public class AgendarCitaStepDefinitions {
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
+
     }
 }

@@ -17,15 +17,18 @@ public class AgregarServicio {
     public static Performable requerido() {
         return Task.where("{0} agrega el servicio requerido para la cita",
                 actor -> {
+                    actor.attemptsTo(Click.on(BTN_AGREGAR_SERVICIO));
                     actor.attemptsTo(
-                            Click.on(BTN_AGREGAR_SERVICIO),
                             Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue("Alcaldía de Medellín").into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),
-                            Click.on(LST_ENTIDAD),
+                            Click.on(LST_ENTIDAD));
+                    actor.attemptsTo(
                             Click.on(DDL_TIPO_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue("Cambio de matricula").into(TXT_SERVICO_REQURIDO),
-                            Click.on(LST_SERVICIO),
-                            Enter.theValue("AAA122").into(TXT_PLACA_DEL_VEHICULO),
+                            Click.on(LST_SERVICIO));
+                    actor.attemptsTo(
+                            Click.on(TXT_PLACA_DEL_VEHICULO),
+                            Enter.theValue("AAA125").into(TXT_PLACA_DEL_VEHICULO),
                             Click.on(BTN_AGREGAR_SERVICIO_REQUERIDO),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );
