@@ -15,7 +15,7 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales());
     }
 
-    @Cuando("quiere agendar una cita")
+    @Cuando("agenda una cita para el servicio cambio de matricula")
     public void quiereAgendarUnaCita() {
         theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido());
     }

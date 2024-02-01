@@ -28,7 +28,7 @@ public class AgregarServicio {
                             Click.on(LST_SERVICIO));
                     actor.attemptsTo(
                             Click.on(TXT_PLACA_DEL_VEHICULO),
-                            Enter.theValue("AAA125").into(TXT_PLACA_DEL_VEHICULO),
+                            Enter.theValue("AAA128").into(TXT_PLACA_DEL_VEHICULO),
                             Click.on(BTN_AGREGAR_SERVICIO_REQUERIDO),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );

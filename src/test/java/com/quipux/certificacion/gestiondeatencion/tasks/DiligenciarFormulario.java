@@ -17,7 +17,7 @@ public class DiligenciarFormulario {
                             Click.on(DDL_TIPO_DE_DOCUMENTO),
                             Enter.theValue("CEDULA CIUDADANIA").into(TXT_TIPO_DE_DOCUMENTO),
                             Click.on(LST_DOCUMENTO),
-                            Enter.theValue("1017204547").into(TXT_NUMERO_DOCUMENTO),
+                            Enter.theValue("1017204548").into(TXT_NUMERO_DOCUMENTO),
                             Click.on(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Esteban").into(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Andres").into(TXT_SEGUNDO_NOMBRE),
