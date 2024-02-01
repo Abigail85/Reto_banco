@@ -18,7 +18,7 @@ public class AgregarServicio {
     public static Performable requerido(String tipoDeServicio) {
         return Task.where("{0} agrega el servicio  para la cita",
                 actor -> {
-                    actor.attemptsTo(Click.on(BTN_AGREGAR_SERVICIO));
+                    actor.attemptsTo(Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilEnabled());
                     actor.attemptsTo(
                             Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue("Alcaldía de Medellín").into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),

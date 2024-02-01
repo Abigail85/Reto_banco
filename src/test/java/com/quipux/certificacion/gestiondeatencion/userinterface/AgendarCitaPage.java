@@ -50,4 +50,6 @@ public class AgendarCitaPage {
             .locatedBy("//li[contains(text(),'16:00')]");
     public static final Target BTN_GUARDAR = Target.the("Selecciona el bot\u00F3n guardar")
             .locatedBy("//button[contains(text(),'Guardar')]");
+    public static final Target LBL_CONFIRMACION_DE_CITA = Target.the("El mensaje de confirmaci\u00F3n de la cita")
+            .locatedBy("//i[contains(text(),'La cita')]");
 }
