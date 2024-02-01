@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SeleccionarHorario implements Performable {
@@ -14,15 +15,10 @@ public class SeleccionarHorario implements Performable {
     @Step("{0} selecciona el horario disponible para agendar la cita")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on("(//span[@class='select2-selection select2-selection--single'])[3]"),
-                Enter.theValue("13").into("//input[@class='select2-search__field']"),
-                Click.on("//li[contains(text(),'13:00')]")
+                Click.on(LST_HORARIO_DISPONIBLE),
+                Enter.theValue("16").into(TXT_INGRESAR_HORA_DESEADA),
+                Click.on(LST_HORA_SELECCIONADA)
         );
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static SeleccionarHorario disponible() {

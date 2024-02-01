@@ -5,7 +5,9 @@ import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.screenplay.ensure.Ensure;
 
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class AgendarCitaStepDefinitions {
@@ -15,12 +17,13 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales());
     }
 
-    @Cuando("quiere agendar una cita")
-    public void quiereAgendarUnaCita() {
-        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido());
+    @Cuando("^agenda una cita para el servicio (.*)$")
+    public void quiereAgendarUnaCita(String tipoDeServicio) {
+        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(tipoDeServicio));
     }
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
+        theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
     }
 }

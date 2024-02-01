@@ -34,19 +34,19 @@ Sigue estos pasos para ejecutar las pruebas localmente:
 #### **Ejecutar Todos los Runners**
 
 ```bash
-gradle clean test -Dproperties=serenity.conf aggregate
+gradle clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate
 ```
 
 #### **Ejecutar Runner Especifico**
 
 ```bash
-gradle clean test --tests nombreClaseRunner -Dproperties=serenity.conf aggregate
+gradle clean test --tests nombreClaseRunner -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate
 ```
 
 #### **Ejecutar Escenario Especifico por Etiqueta**
 
 ```bash
-gradle clean test -Dproperties=serenity.conf -Dcucumber.filter.tags="@nombreEtiqueta" aggregate
+gradle clean test -Dproperties=serenity.conf -Dcucumber.filter.tags="@nombreEtiqueta" -Dfile.encoding=UTF-8 aggregate
 ```
 
 #### **Ejecutar en Docker**

@@ -8,6 +8,10 @@ public class AgendarCitaPage {
             .locatedBy("//button[text()='Agendar cita']");
     public static final Target DDL_SUB_SEDE = Target.the("Lista de sub-sedes")
             .located(By.id("select2-subsede-container"));
+    public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
+            .locatedBy("//input[@class='select2-search__field']");
+    public static final Target LST_SUB_SEDE = Target.the("Selecciona la sub sede requerida")
+            .locatedBy("//li[contains(text(),'sh subsede 1')]");
     public static final Target DDL_TIPO_DE_DOCUMENTO = Target.the("Lista de tipos de documentos")
             .located(By.id("select2-tipoDocumento-container"));
     public static final Target TXT_TIPO_DE_DOCUMENTO = Target.the("Campo para ingresar el tipo de documento del solicitante")
@@ -30,4 +34,22 @@ public class AgendarCitaPage {
             .located(By.id("telefono"));
     public static final Target TXT_DIRECCION_DE_RESIDENCIA = Target.the("Campo para ingresar la direcci\u00F3n de residencia")
             .located(By.id("direccion"));
+    public static final Target BTN_CALENDARIO = Target.the("Calendario")
+            .located(By.id("agendarCitaDatePicker"));
+    public static final Target BTN_AGENDAR_MES = Target.the("Seleccionar fecha")
+            .locatedBy("(//th[@class='datepicker-switch'])[1]");
+    public static final Target BTN_MES_REQUERIDO = Target.the("Selecciona el mes requerido")
+            .locatedBy("//span[text()='Feb']");
+    public static final Target BTN_DIA_REQURIDO = Target.the("Selecciona el d\u00EDa requerido")
+            .locatedBy("//td[@class='day' and text()='1']");
+    public static final Target LST_HORARIO_DISPONIBLE = Target.the("Selecciona el horario disponible")
+            .locatedBy("(//span[@class='select2-selection select2-selection--single'])[3]");
+    public static final Target TXT_INGRESAR_HORA_DESEADA = Target.the("Ingresa la hora deseada para la cita")
+            .locatedBy("//input[@class='select2-search__field']");
+    public static final Target LST_HORA_SELECCIONADA = Target.the("Selecciona la hora para la cita")
+            .locatedBy("//li[contains(text(),'16:00')]");
+    public static final Target BTN_GUARDAR = Target.the("Selecciona el bot\u00F3n guardar")
+            .locatedBy("//button[contains(text(),'Guardar')]");
+    public static final Target LBL_CONFIRMACION_DE_CITA = Target.the("El mensaje de confirmaci\u00F3n de la cita")
+            .locatedBy("//div[contains(text(),'La cita')]");
 }

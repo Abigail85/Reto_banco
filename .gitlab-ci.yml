@@ -25,11 +25,8 @@ sast:
 test-automation:
   stage: test
   image: jhonacevedor/quipux-test-automation # Utiliza la imagen oficial de Gradle con la versión "latest"
-  before_script:
-    - grep -rl 'USER_GA' ./ | xargs sed -i 's/USER_GA/'"$USER_GA"'/g'
-    - grep -rl 'PASSWORD_GA' ./ | xargs sed -i 's/PASSWORD_GA/'"$PASSWORD_GA"'/g'
   script:
-    - ./gradlew clean test -Dproperties=serenity.conf aggregate || true
+    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate || true
   tags:
     - gitlab-runner-docker
   artifacts: # Define la sección de artefactos
