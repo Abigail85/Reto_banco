@@ -17,14 +17,14 @@ public class DiligenciarFormulario {
                             Click.on(DDL_TIPO_DE_DOCUMENTO),
                             Enter.theValue("CEDULA CIUDADANIA").into(TXT_TIPO_DE_DOCUMENTO),
                             Click.on(LST_DOCUMENTO),
-                            Enter.theValue("1017204550").into(TXT_NUMERO_DOCUMENTO),
+                            Enter.theValue("1017204050").into(TXT_NUMERO_DOCUMENTO),
                             Click.on(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Estebane").into(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Andrese").into(TXT_SEGUNDO_NOMBRE),
                             Enter.theValue("Villae").into(TXT_PRIMER_APELLIDO),
                             Enter.theValue("Villadae").into(TXT_SEGUNDO_APELLIDO),
                             Enter.theValue("juliann@gmail.com").into(TXT_CORREO_ELECTRONICO),
-                            Enter.theValue("3146834991").into(TXT_NUMERO_TELEFONICO),
+                            Enter.theValue("3146834891").into(TXT_NUMERO_TELEFONICO),
                             Enter.theValue("calle medellin").into(TXT_DIRECCION_DE_RESIDENCIA),
                             Click.on(BTN_CONTINUAR)
                     );

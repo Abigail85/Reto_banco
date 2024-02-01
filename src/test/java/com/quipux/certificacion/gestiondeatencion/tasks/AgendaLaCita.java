@@ -12,14 +12,14 @@ import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCi
 
 public class AgendaLaCita {
 
-    public static Performable paraUnServicioRequerido() {
+    public static Performable paraUnServicioRequerido(String tipoDeServicio) {
         return Task.where("{0} completa el formulario para agendar cita",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarOpcionDeMenu.paraTramites(),
                             SeleccionarSubSede.paraAgendarLaCita(),
                             DiligenciarFormulario.delSolicitante(),
-                            AgregarServicio.requerido(),
+                            AgregarServicio.requerido(tipoDeServicio),
                             SeleccionarFecha.disponible(),
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
