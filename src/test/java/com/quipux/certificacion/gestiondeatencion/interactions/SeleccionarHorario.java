@@ -9,20 +9,19 @@ import net.serenitybdd.screenplay.actions.Enter;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class SeleccionarSubSede implements Performable {
+public class SeleccionarHorario implements Performable {
 
     @Override
-    @Step("{0} selecciona la sub-sede para agendar la cita")
+    @Step("{0} selecciona el horario disponible para agendar la cita")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(BTN_AGENDAR_CITA),
-                Click.on(DDL_SUB_SEDE),
-                Enter.theValue("sh subsede 1").into(TXT_INGRESAR_SUB_SEDE),
-                Click.on(LST_SUB_SEDE)
+                Click.on(LST_HORARIO_DISPONIBLE),
+                Enter.theValue("16").into(TXT_INGRESAR_HORA_DESEADA),
+                Click.on(LST_HORA_SELECCIONADA)
         );
     }
 
-    public static SeleccionarSubSede paraAgendarLaCita() {
-        return instrumented(SeleccionarSubSede.class);
+    public static SeleccionarHorario disponible() {
+        return instrumented(SeleccionarHorario.class);
     }
 }
