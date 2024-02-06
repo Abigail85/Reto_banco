@@ -41,7 +41,7 @@ public class AgendarCitaPage {
     public static final Target BTN_MES_REQUERIDO = Target.the("Selecciona el mes requerido")
             .locatedBy("//span[text()='Feb']");
     public static final Target BTN_DIA_REQURIDO = Target.the("Selecciona el d\u00EDa requerido")
-            .locatedBy("//td[@class='day' and text()='1']");
+            .locatedBy("//td[@class='day' and text()='8']");
     public static final Target LST_HORARIO_DISPONIBLE = Target.the("Selecciona el horario disponible")
             .locatedBy("(//span[@class='select2-selection select2-selection--single'])[3]");
     public static final Target TXT_INGRESAR_HORA_DESEADA = Target.the("Ingresa la hora deseada para la cita")

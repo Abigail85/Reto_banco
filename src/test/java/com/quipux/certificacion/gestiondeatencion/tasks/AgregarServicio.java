@@ -26,7 +26,7 @@ public class AgregarServicio {
                     actor.attemptsTo(
                             Click.on(DDL_TIPO_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue(tipoDeServicio).into(TXT_SERVICO_REQURIDO),
-                            Click.on(LST_SERVICIO));
+                            Click.on(LST_SERVICIO.of(tipoDeServicio)));
                     actor.attemptsTo(
                             Click.on(TXT_PLACA_DEL_VEHICULO),
                             Enter.theValue(obtenerPlacaDelVehiculo()).into(TXT_PLACA_DEL_VEHICULO),

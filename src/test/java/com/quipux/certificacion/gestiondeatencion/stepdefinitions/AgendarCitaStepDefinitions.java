@@ -17,9 +17,9 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales());
     }
 
-    @Cuando("^agenda una cita para el servicio (.*)$")
-    public void quiereAgendarUnaCita(String tipoDeServicio) {
-        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(tipoDeServicio));
+    @Cuando("^agenda una cita con (.*) y (.*) para el (.*)$")
+    public void quiereAgendarUnaCita(String tipoDeDocumento, String numeroDeDocumento, String tipoDeServicio) {
+        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(tipoDeDocumento, numeroDeDocumento, tipoDeServicio));
     }
 
     @Cuando("agenda una cita para realizar varios tramites")

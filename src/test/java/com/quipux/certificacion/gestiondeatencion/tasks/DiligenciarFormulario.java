@@ -10,14 +10,14 @@ import static com.quipux.certificacion.gestiondeatencion.userinterface.ComunesPa
 
 public class DiligenciarFormulario {
 
-    public static Performable delSolicitante() {
+    public static Performable delSolicitante(String tipoDeDocumento, String numeroDeDocumento) {
         return Task.where("{0} diligencia el formulario del solicitante",
                 actor -> {
                     actor.attemptsTo(
                             Click.on(DDL_TIPO_DE_DOCUMENTO),
-                            Enter.theValue("CEDULA CIUDADANIA").into(TXT_TIPO_DE_DOCUMENTO),
+                            Enter.theValue(tipoDeDocumento).into(TXT_TIPO_DE_DOCUMENTO),
                             Click.on(LST_DOCUMENTO),
-                            Enter.theValue("1017224110").into(TXT_NUMERO_DOCUMENTO),
+                            Enter.theValue(numeroDeDocumento).into(TXT_NUMERO_DOCUMENTO),
                             Click.on(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Sara").into(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Carolina").into(TXT_SEGUNDO_NOMBRE),
