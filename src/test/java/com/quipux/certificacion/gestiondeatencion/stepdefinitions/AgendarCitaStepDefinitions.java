@@ -5,10 +5,7 @@ import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
-import net.serenitybdd.cucumber.suiteslicing.SerenityCSVHeader;
-import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import org.junit.runner.RunWith;
 
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;

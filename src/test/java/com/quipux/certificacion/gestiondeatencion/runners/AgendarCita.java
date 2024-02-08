@@ -9,8 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = "src/test/resources/features/agendar_cita.feature",
         glue = {"com.quipux.certificacion.gestiondeatencion"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@agendarCitaUsuarioJuridico"
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class AgendarCita {
 }

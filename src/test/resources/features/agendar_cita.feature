@@ -23,7 +23,6 @@ Característica: Agendar citas por medio de la pagina web
       | NIT               | 1017224120        | Lavado de carro               |
       | RUT               | 1017204548        | Traspaso de vehículo blindado |
 
-
   @agendarCitaMultiTramite
   Escenario: Agendar cita multitramite
     Dado que el usuario se encuentra en la pagina web
