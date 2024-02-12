@@ -17,14 +17,14 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotP
 
 public class AgendaLaCita {
 
-    public static Performable paraUnServicioRequerido(String tipoDeDocumento, String numeroDeDocumento, String tipoDeServicio) {
+    public static Performable paraUnServicioRequerido(String servicio) {
         return Task.where("{0} completa el formulario para agendar cita",
                 actor -> {
                     actor.attemptsTo(
-                            SeleccionarOpcionDeMenu.paraTramites(),
+                            SeleccionarAgendarCita.paraElServicio(),
                             SeleccionarSubSede.paraAgendarLaCita(),
                             DiligenciarFormulario.delSolicitante(tipoDeDocumento, numeroDeDocumento),
-                            AgregarServicio.requerido(tipoDeServicio),
+                            AgregarServicio.requerido(servicio),
                             SeleccionarFecha.disponible(),
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),

@@ -12,14 +12,14 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class AgendarCitaStepDefinitions {
 
-    @Dado("que el usuario se encuentra en la pagina web")
+    @Dado("que el usuario se encuentra en la pagina web de Shopping GA")
     public void queElUsuarioSeEncuentraEnLaPaginaWeb() {
         theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales());
     }
 
-    @Cuando("^agenda una cita con (.*) y (.*) para el (.*)$")
-    public void quiereAgendarUnaCita(String tipoDeDocumento, String numeroDeDocumento, String tipoDeServicio) {
-        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(tipoDeDocumento, numeroDeDocumento, tipoDeServicio));
+    @Cuando("^agenda una cita para el servicio (.*)$")
+    public void quiereAgendarUnaCita(String servicio) {
+        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(servicio));
     }
 
     @Cuando("agenda una cita para realizar varios tramites")
