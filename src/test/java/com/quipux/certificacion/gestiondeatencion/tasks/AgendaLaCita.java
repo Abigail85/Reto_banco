@@ -5,6 +5,7 @@ import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSed
 import com.quipux.certificacion.gestiondeatencion.model.Usuario;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
@@ -36,7 +37,7 @@ public class AgendaLaCita {
                             Click.on(BTN_GUARDAR),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );
-
+                    actor.remember("confirmacionCita", LBL_CONFIRMACION_DE_CITA.resolveFor(actor).getText());
                 }
         );
     }
