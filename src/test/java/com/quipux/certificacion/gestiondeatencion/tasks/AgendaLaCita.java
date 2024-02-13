@@ -5,11 +5,9 @@ import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSed
 import com.quipux.certificacion.gestiondeatencion.model.Usuario;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Clear;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -30,18 +28,15 @@ public class AgendaLaCita {
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getServicio()),
-                            Clear.field(TXT_FECHA_REQUERIDA),
-                            Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA)
-//                            SeleccionarHorario.disponible(),
-//                            Scroll.to(BTN_GUARDAR),
-//                            Click.on(BTN_GUARDAR),
-//                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
+                            Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
+                            Hit.the(Keys.TAB).keyIn(TXT_FECHA_REQUERIDA),
+                            SeleccionarHorario.disponible(),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );
-                    try {
-                        Thread.sleep(20000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+
                 }
         );
     }

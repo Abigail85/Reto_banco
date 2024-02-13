@@ -5,7 +5,11 @@ import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
 
