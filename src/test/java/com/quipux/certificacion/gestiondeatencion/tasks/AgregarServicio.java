@@ -1,5 +1,6 @@
 package com.quipux.certificacion.gestiondeatencion.tasks;
 
+import com.quipux.certificacion.gestiondeatencion.model.Servicio;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -15,18 +16,18 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotP
 
 public class AgregarServicio {
 
-    public static Performable requerido(String servicio) {
+    public static Performable requerido(Servicio servicio) {
         return Task.where("{0} agrega el servicio  para la cita",
                 actor -> {
                     actor.attemptsTo(Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilEnabled());
                     actor.attemptsTo(
                             Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
-                            Enter.theValue("Alcaldía de Medellín").into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),
-                            Click.on(LST_ENTIDAD));
+                            Enter.theValue(servicio.getEntidadPrestadoraDeServicio()).into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),
+                            Click.on(LST_ENTIDAD.of(servicio.getEntidadPrestadoraDeServicio())));
                     actor.attemptsTo(
                             Click.on(DDL_TIPO_DE_SERVICIO).afterWaitingUntilEnabled(),
-                            Enter.theValue(tipoDeServicio).into(TXT_SERVICO_REQURIDO),
-                            Click.on(LST_SERVICIO.of(tipoDeServicio)));
+                            Enter.theValue(servicio.getNombreDeServicio()).into(TXT_SERVICO_REQURIDO),
+                            Click.on(LST_SERVICIO.of(servicio.getNombreDeServicio())));
                     actor.attemptsTo(
                             Click.on(TXT_PLACA_DEL_VEHICULO),
                             Enter.theValue(obtenerPlacaDelVehiculo()).into(TXT_PLACA_DEL_VEHICULO),

@@ -1,0 +1,2 @@
+#language:es
+  Característica:

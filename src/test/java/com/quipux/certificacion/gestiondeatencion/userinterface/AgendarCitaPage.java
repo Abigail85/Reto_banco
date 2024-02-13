@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 public class AgendarCitaPage {
     public static final Target BTN_AGENDAR_CITA = Target.the("Bot\u00F3n para agendar cita")
-            .locatedBy("//button[text()='Agendar cita']");
+            .locatedBy("//button[contains(text(),'Agendar')]");
     public static final Target DDL_SUB_SEDE = Target.the("Lista de sub-sedes")
             .located(By.id("select2-subsede-container"));
     public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
@@ -17,7 +17,7 @@ public class AgendarCitaPage {
     public static final Target TXT_TIPO_DE_DOCUMENTO = Target.the("Campo para ingresar el tipo de documento del solicitante")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_DOCUMENTO = Target.the("Tipo de documento")
-            .locatedBy("//li[contains(text(),'CEDULA CIUDADANIA')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target TXT_NUMERO_DOCUMENTO = Target.the("Campo para ingresar el n\u00FAmero de documento")
             .located(By.id("numeroDocumento"));
     public static final Target TXT_PRIMER_NOMBRE = Target.the("Campo para ingresar el primer nombre")
@@ -42,6 +42,8 @@ public class AgendarCitaPage {
             .locatedBy("//span[text()='Feb']");
     public static final Target BTN_DIA_REQURIDO = Target.the("Selecciona el d\u00EDa requerido")
             .locatedBy("//td[@class='day' and text()='8']");
+    public static final Target TXT_FECHA_REQUERIDA = Target.the("Ingresa la fecha requerida para la cita")
+            .located(By.id("agendarCitaDatePicker"));
     public static final Target LST_HORARIO_DISPONIBLE = Target.the("Selecciona el horario disponible")
             .locatedBy("(//span[@class='select2-selection select2-selection--single'])[3]");
     public static final Target TXT_INGRESAR_HORA_DESEADA = Target.the("Ingresa la hora deseada para la cita")

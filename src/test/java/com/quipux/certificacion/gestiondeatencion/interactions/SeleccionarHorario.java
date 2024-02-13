@@ -3,6 +3,7 @@ package com.quipux.certificacion.gestiondeatencion.interactions;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.actions.Clear;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
