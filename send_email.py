@@ -1,7 +1,7 @@
+import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
 
 def send_email(subject, message):
     sender_email = os.getenv("SENDER_EMAIL")
@@ -18,7 +18,7 @@ def send_email(subject, message):
     msg['To'] = receiver_email
 
     # Create HTML message
-    html = f"""\
+    html = f"""
     <html>
       <head>
         <style>
@@ -62,4 +62,3 @@ def send_email(subject, message):
 if __name__ == "__main__":
     # Solo se ejecuta si se importa como módulo, no cuando se llama directamente desde la línea de comandos
     pass
-

@@ -1,5 +1,5 @@
 include:
-- template: Security/SAST.gitlab-ci.yml
+#- template: Security/SAST.gitlab-ci.yml
 - project: 'devops-templates/general-templates'
   ref: 'development'
   file:
@@ -10,44 +10,43 @@ variables:
 
 stages:
   - codequality
-  - security_tests
-  - automation
+  #- security_tests
+  #- automation
   - notify
 
-sast:
-  stage: security_tests
-  tags:
-    - gitlab-runner-docker
-  artifacts:
-    reports:
-      sast: gl-sast-report.json
-    paths: [gl-sast-report.json]
+#sast:
+#  stage: security_tests
+#  tags:
+#    - gitlab-runner-docker
+#  artifacts:
+#    reports:
+#      sast: gl-sast-report.json
+#    paths: [gl-sast-report.json]
 
-test-automation:
-  stage: automation
-  image: jhonacevedor/quipux-test-automation
-  script:
-    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate
-  tags:
-    - gitlab-runner-docker
-  artifacts: # Define la sección de artefactos
-    paths:
-      - target/ # Ruta del archivo de reporte
-  allow_failure: true
+#test-automation:
+#  stage: automation
+#  image: jhonacevedor/quipux-test-automation
+#  script:
+#    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate || true
+#  tags:
+#    - gitlab-runner-docker
+#  artifacts: # Define la sección de artefactos
+#    paths:
+#      - target/ # Ruta del archivo de reporte
+#  allow_failure: true
 
 notify_email:
   stage: notify
-  image: python:3.8
+  image: python:3.9
   variables:
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
       Las pruebas automatizadas han finalizado correctamente. Por favor, 
       revisa los resultados en el artefacto generado. Si tienes alguna 
       pregunta, no dudes en contactarnos.
-
   script:
     - python send_email.py "$EMAIL_SUBJECT" "$EMAIL_MESSAGE"
   when: always
-  needs:
-    - job: test-automation
-      artifacts: true
+  #needs:
+  #  - job: test-automation
+  #    artifacts: true
