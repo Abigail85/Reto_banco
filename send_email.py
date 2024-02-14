@@ -19,7 +19,6 @@ def send_email(subject, message):
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
-    # Create HTML message
     html = f"""\
     <html>
       <head>
