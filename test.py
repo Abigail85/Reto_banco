@@ -73,3 +73,10 @@ def enviar_correo(radicado):
 # Ejemplo de uso
 radicado = '66001311000320210005100'
 enviar_correo(radicado)
+
+
+
+ <div class="container">
+          <h2>Notificación de Resultados de Pruebas Automatizadas</h2>
+          <p>{message}</p>
+        </div>
