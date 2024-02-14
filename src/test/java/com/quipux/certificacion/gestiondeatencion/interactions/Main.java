@@ -12,11 +12,14 @@ public class Main {
         ///int indiceSeparador = fecha.indexOf('/');
 
         // ACA VA LA VARIABLE DEL METODO RESOLVEFOR(ACTOR)
-        String fecha = "01/09/2024 16:00";
+        String fecha = "01/09/2024";
         int dia = obtenerDia(fecha);
 
-        System.out.println("La fecha actual es: " + fecha);
-        System.out.println("La nueva fecha es: " + nuevaFecha(fecha));
+        //System.out.println("La fecha actual es: " + fecha);
+        //System.out.println("La nueva fecha es: " + nuevaFecha(fecha));
+
+
+        prueba(fecha);
 
 
     }
@@ -72,7 +75,7 @@ public class Main {
         nuevaFecha = String.valueOf(diaRandom);
         nuevaFecha += fecha.substring(2, 10);
 
-        return  nuevaFecha;
+        return nuevaFecha;
     }
 
     public static String modificarMes(String mes, String fecha) {
@@ -85,7 +88,7 @@ public class Main {
         if (autMes <= 9) {
             textMes += String.valueOf(autMes);
             fecha = fecha.replace(mes, textMes);
-            System.out.println("El aumento del mes es: "+ fecha);
+            System.out.println("El aumento del mes es: " + fecha);
 
             // VALIDACION DE DICIEMBRE
         } else if (autMes == 13) {
@@ -93,12 +96,21 @@ public class Main {
             autMes = 1;
             textMes += String.valueOf(autMes);
             fecha = fecha.replace(mes, textMes);
-        // SI SON MESES DEL 10 - 11
+            // SI SON MESES DEL 10 - 11
         } else {
             fecha = fecha.replace(mes, String.valueOf(autMes));
         }
         return fecha;
 
+    }
+
+    //Método de prueba
+    public static void prueba(String fecha){
+        String[] fec = fecha.split("/");
+
+        for(int i = 0; i< fec.length; i++){
+            System.out.println(fec[i]);
+        }
     }
 
 }
