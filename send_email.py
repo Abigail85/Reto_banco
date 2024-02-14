@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -10,48 +11,15 @@ def send_email(subject, message):
     smtp_port = os.getenv("SMTP_PORT")
     smtp_username = os.getenv("SMTP_USERNAME")
     smtp_password = os.getenv("SMTP_PASSWORD")
-    
-    # Create message container - the correct MIME type is multipart/alternative.
-    msg = MIMEMultipart('alternative')
+
+    # Create message container.
+    msg = MIMEMultipart()
     msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
-    # Create HTML message
-    html = f"""
-    <html>
-      <head>
-        <style>
-          body {{
-            font-family: Arial, sans-serif;
-          }}
-          .container {{
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-          }}
-          h2 {{
-            color: #333;
-          }}
-          p {{
-            color: #555;
-          }}
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h2>Notificación de Resultados de Pruebas Automatizadas</h2>
-          <p>{message}</p>
-        </div>
-      </body>
-    </html>
-    """
-
-    # Attach HTML part to message container.
-    part = MIMEText(html, 'html')
+    # Attach message to container.
+    part = MIMEText(message, 'plain')
     msg.attach(part)
 
     # Send the message via SMTP server.
