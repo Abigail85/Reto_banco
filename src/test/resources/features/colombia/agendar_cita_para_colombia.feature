@@ -13,7 +13,7 @@ Característica: Agendar citas por medio de la pagina web
 
   Escenario: Agendar cita exitosa para un usuario con NIT
     Dado que el usuario se encuentra en la pagina web de Shopping GA
-    Cuando agenda una cita para el servicio Lavado de carro
+    Cuando agenda una cita para el servicio Duplicado licencia de conducción moto
     Entonces debe ver que la cita fue agendada de forma exitosa
 
   Escenario: Agendar cita exitosa para un usuario con RUT
@@ -26,7 +26,11 @@ Característica: Agendar citas por medio de la pagina web
     Cuando agenda una cita para el servicio Traspaso de vehículo blindado
     Entonces debe ver que la cita fue agendada de forma exitosa
 
-  Escenario: Agendar cita multitramite se necesita parametro 2062
+  @agendarMultiTramite
+  Escenario: Agendar cita multitramite
     Dado que el usuario se encuentra en la pagina web de Shopping GA
-    Cuando agenda una cita para realizar varios tramites
+    Cuando agenda una cita para tramitar diferentes servicios
+      | entidadPrestadora             | servicio                              |
+      | Alcaldía de Medellín          | Cambio de matricula                   |
+      | Secretaría Movilidad Medellín | Duplicado licencia de conducción moto |
     Entonces debe ver que la cita fue agendada de forma exitosa
