@@ -15,8 +15,7 @@ public class ConsultarCita {
         return Task.where("{0} completa el formulario para consultar cita",
                 actor -> {
                     actor.attemptsTo(
-                            SeleccionarOpcionDeMenu.paraTramites(),
-
+                            SeleccionarAgendarCita.paraElServicio(),
                             //TIPO DOCUMENTO
                             Click.on(DDL_TIPO_DE_DOCUMENTO),
                             Enter.theValue("CEDULA CIUDADANIA").into(TXT_TIPO_DE_DOCUMENTO),

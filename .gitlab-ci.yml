@@ -11,7 +11,8 @@ variables:
 stages:
   - codequality
   - security_tests
-  - test
+  - automation
+  - notify
 
 sast:
   stage: security_tests
@@ -23,13 +24,30 @@ sast:
     paths: [gl-sast-report.json]
 
 test-automation:
-  stage: test
-  image: jhonacevedor/quipux-test-automation # Utiliza la imagen oficial de Gradle con la versión "latest"
+  stage: automation
+  image: jhonacevedor/quipux-test-automation
   script:
-    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate || true
+    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate
   tags:
     - gitlab-runner-docker
   artifacts: # Define la sección de artefactos
     paths:
       - target/ # Ruta del archivo de reporte
   allow_failure: true
+
+notify_email:
+  stage: notify
+  image: python:3.8
+  variables:
+    EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
+    EMAIL_MESSAGE: |
+      Las pruebas automatizadas han finalizado correctamente. Por favor, 
+      revisa los resultados en el artefacto generado. Si tienes alguna 
+      pregunta, no dudes en contactarnos.
+
+  script:
+    - python send_email.py "$EMAIL_SUBJECT" "$EMAIL_MESSAGE"
+  when: always
+  needs:
+    - job: test-automation
+      artifacts: true

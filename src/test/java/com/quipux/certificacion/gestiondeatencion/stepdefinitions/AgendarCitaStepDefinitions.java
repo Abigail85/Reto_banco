@@ -7,21 +7,34 @@ import com.quipux.certificacion.gestiondeatencion.tasks.ReagendarCita;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 
+import java.io.IOException;
+
+import static com.quipux.certificacion.gestiondeatencion.model.builders.UsuarioBuilder.conLosDatosDelUsuario;
+import static com.quipux.certificacion.gestiondeatencion.model.builders.UsuarioBuilder.deUsuario;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
+import static com.quipux.certificacion.gestiondeatencion.utils.UtileriaCsv.obtenerDatosDeCsv;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class AgendarCitaStepDefinitions {
 
-    @Dado("que el usuario se encuentra en la pagina web")
-    public void queElUsuarioSeEncuentraEnLaPaginaWeb() {
-        theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales());
+    @Dado("que el usuario se encuentra en la pagina web de Shopping GA")
+    public void queElUsuarioSeEncuentraEnLaPaginaWeb() throws IOException {
+        theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales(deUsuario(obtenerDatosDeCsv("autenticacion", "")).build()));
     }
 
     @Cuando("^agenda una cita para el servicio (.*)$")
-    public void quiereAgendarUnaCita(String tipoDeServicio) {
-        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(tipoDeServicio));
+    public void quiereAgendarUnaCita(String servicio) throws IOException {
+        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", servicio)).build()));
+    }
+
+    @Cuando("agenda una cita para realizar varios tramites")
+    public void agendaUnaCitaParaRealizarVariosTramites() {
     }
 
     @Cuando("reagenda la cita para el servicio (.*)$")
