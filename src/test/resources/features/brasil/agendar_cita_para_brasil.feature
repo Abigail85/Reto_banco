@@ -1,2 +1,2 @@
 #language:es
-  Característica:
+  Característica: Escenarios de brasil
