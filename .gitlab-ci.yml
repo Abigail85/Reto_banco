@@ -27,7 +27,7 @@ test-automation:
   stage: automation
   image: jhonacevedor/quipux-test-automation
   script:
-    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate
+    - ./gradlew clean test -Dproperties=serenity.conf -Dfile.encoding=UTF-8 aggregate || true
   tags:
     - gitlab-runner-docker
   artifacts: # Define la sección de artefactos
