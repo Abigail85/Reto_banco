@@ -24,11 +24,11 @@ def send_email(subject, message):
 
     try:
         # Send the message via SMTP server.
-        with smtplib.SMTP(smtp_server, smtp_port) as servidor_smtp:
-            servidor_smtp.starttls()
-            servidor_smtp.login(smtp_username, smtp_password)
-            servidor_smtp.sendmail(sender_email, receiver_email, msg.as_string())
-            servidor_smtp.quit()  # Cerrar manualmente la conexión SMTP
+        # Establecer conexión SMTP.
+        servidor_smtp = smtplib.SMTP(smtp_server, smtp_port)
+        servidor_smtp.starttls()
+        servidor_smtp.login(smtp_username, smtp_password)
+        servidor_smtp.sendmail(sender_email, receiver_email, msg.as_string())
         print("Correo enviado correctamente.")
     except Exception as e:
         print("Error al enviar correo:", str(e))
