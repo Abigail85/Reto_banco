@@ -15,9 +15,9 @@ public class Autenticarse {
                 actor -> {
                     actor.attemptsTo(
                             Click.on(TXT_USUARIO),
-                            Enter.theValue(System.getenv("USUARIO_GA")).into(TXT_USUARIO),
+                            Enter.theValue("yeison.rico").into(TXT_USUARIO),
                             Click.on(TXT_CONTRASENA),
-                            Enter.theValue(System.getenv("CONTRASENA_GA")).into(TXT_CONTRASENA),
+                            Enter.theValue("Yeison123").into(TXT_CONTRASENA),
                             Click.on(BTN_INGRESAR));
                 }
         );
