@@ -36,4 +36,25 @@ public class AgregarServicio {
                 }
         );
     }
+
+    public static Performable prueba(String entidadPrestadora, String servicio) {
+        return Task.where("{0} agrega el servicio  para la cita",
+                actor -> {
+                    actor.attemptsTo(
+                            Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilEnabled(),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000)),
+                            Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
+                            Enter.theValue(entidadPrestadora).into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),
+                            Click.on(LST_ENTIDAD.of(entidadPrestadora)),
+                            Click.on(DDL_TIPO_DE_SERVICIO).afterWaitingUntilEnabled(),
+                            Enter.theValue(servicio).into(TXT_SERVICO_REQURIDO),
+                            Click.on(LST_SERVICIO.of(servicio)),
+                            Click.on(TXT_PLACA_DEL_VEHICULO),
+                            Enter.theValue(obtenerPlacaDelVehiculo()).into(TXT_PLACA_DEL_VEHICULO),
+                            Click.on(BTN_AGREGAR_SERVICIO_REQUERIDO),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                    );
+                }
+        );
+    }
 }

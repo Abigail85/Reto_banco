@@ -1,7 +1,9 @@
 package com.quipux.certificacion.gestiondeatencion.stepdefinitions;
 
 import com.quipux.certificacion.gestiondeatencion.tasks.AgendaLaCita;
+import com.quipux.certificacion.gestiondeatencion.tasks.AgregarMultiplesServicios;
 import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -12,6 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import static com.quipux.certificacion.gestiondeatencion.model.builders.UsuarioBuilder.conLosDatosDelUsuario;
 import static com.quipux.certificacion.gestiondeatencion.model.builders.UsuarioBuilder.deUsuario;
@@ -31,12 +35,14 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", servicio)).build()));
     }
 
-    @Cuando("agenda una cita para realizar varios tramites")
-    public void agendaUnaCitaParaRealizarVariosTramites() {
+    @Cuando("agenda una cita para tramitar diferentes servicios")
+    public void agendaUnaCitaParaRealizarVariosTramites(List<Map<String, String>> servicios) {
+        theActorInTheSpotlight().attemptsTo(AgregarMultiplesServicios.requeridos(servicios));
     }
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
+        System.out.println("texto " + LBL_CONFIRMACION_DE_CITA.resolveFor(theActorInTheSpotlight()).getText());
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
     }
 }
