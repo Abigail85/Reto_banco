@@ -37,7 +37,7 @@ stages:
 
 notify_email:
   stage: notify
-  image: python:3.9
+  image: python:3.8
   variables:
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
