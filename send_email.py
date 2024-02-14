@@ -34,13 +34,13 @@ def send_email(subject, message):
 
     try:
         # Send the message via SMTP server.
-        with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
-            server.login(smtp_username, smtp_password)
-            server.sendmail(sender_email, receiver_email, msg.as_string())
+         with smtplib.SMTP(smtp_server, smtp_port) as servidor_smtp:
+          servidor_smtp.starttls()
+          servidor_smtp.login(smtp_username, smtp_password)
+          servidor_smtp.sendmail(sender_email, receiver_email, msg.as_string())
         print("Correo enviado correctamente.")
     except Exception as e:
         print("Error al enviar correo:", str(e))
-
 
 if __name__ == "__main__":
     # Obtener los argumentos desde la línea de comandos
