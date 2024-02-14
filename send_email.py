@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -19,7 +18,7 @@ def send_email(subject, message):
     msg['To'] = receiver_email
 
     # Create HTML message
-    html = f"""\
+    html = f"""
     <html>
       <head>
         <style>
