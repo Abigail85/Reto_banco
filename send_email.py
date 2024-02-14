@@ -11,17 +11,7 @@ def send_email(subject, message):
     smtp_port = int(os.getenv("SMTP_PORT"))  # Convertir a entero
     smtp_username = os.getenv("SMTP_USERNAME")
     smtp_password = os.getenv("SMTP_PASSWORD")
-
-    # Print variables
-    print("Sender Email:", sender_email)
-    print("Receiver Email:", receiver_email)
-    print("SMTP Server:", smtp_server)
-    print("SMTP Port:", smtp_port)
-    print("SMTP Username:", smtp_username)
-    print("SMTP Password:", smtp_password)
-    print("SMTP subject:", subject)
-    print("SMTP message:", message)
-
+    
     # Create message container.
     msg = MIMEMultipart()
     msg['Subject'] = subject
@@ -34,10 +24,10 @@ def send_email(subject, message):
 
     try:
         # Send the message via SMTP server.
-         with smtplib.SMTP(smtp_server, smtp_port) as servidor_smtp:
-          servidor_smtp.starttls()
-          servidor_smtp.login(smtp_username, smtp_password)
-          servidor_smtp.sendmail(sender_email, receiver_email, msg.as_string())
+        with smtplib.SMTP(smtp_server, smtp_port) as servidor_smtp:
+            servidor_smtp.starttls()
+            servidor_smtp.login(smtp_username, smtp_password)
+            servidor_smtp.sendmail(sender_email, receiver_email, msg.as_string())
         print("Correo enviado correctamente.")
     except Exception as e:
         print("Error al enviar correo:", str(e))
