@@ -34,6 +34,7 @@ test-automation:
     paths:
       - target/ # Ruta del archivo de reporte
   allow_failure: true
+  when: always
 
 notify_email:
   stage: notify
