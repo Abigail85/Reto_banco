@@ -21,7 +21,7 @@ public class SeleccionarHorario implements Performable {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Click.on(LST_HORARIO_DISPONIBLE),
-                Enter.theValue("16").into(TXT_INGRESAR_HORA_DESEADA),
+                Enter.theValue("15").into(TXT_INGRESAR_HORA_DESEADA),
                 Click.on(LST_HORA_SELECCIONADA));
     }
 
