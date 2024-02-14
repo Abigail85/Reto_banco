@@ -41,5 +41,13 @@ def send_email(subject, message):
 
 
 if __name__ == "__main__":
-    # Solo se ejecuta si se importa como módulo, no cuando se llama directamente desde la línea de comandos
-    pass
+    # Obtener los argumentos desde la línea de comandos
+    import sys
+    if len(sys.argv) != 3:
+        print("Uso: python send_email.py <asunto> <mensaje>")
+        sys.exit(1)
+    subject = sys.argv[1]
+    message = sys.argv[2]
+
+    # Llamar a la función send_email con los argumentos proporcionados
+    send_email(subject, message)
