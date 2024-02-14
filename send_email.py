@@ -8,7 +8,7 @@ def send_email(subject, message):
     sender_email = os.getenv("SENDER_EMAIL")
     receiver_email = os.getenv("RECIPIENT_EMAIL")
     smtp_server = os.getenv("SMTP_SERVER")
-    smtp_port = os.getenv("SMTP_PORT")
+    smtp_port = int(os.getenv("SMTP_PORT"))  # Convertir a entero
     smtp_username = os.getenv("SMTP_USERNAME")
     smtp_password = os.getenv("SMTP_PASSWORD")
 
@@ -19,6 +19,8 @@ def send_email(subject, message):
     print("SMTP Port:", smtp_port)
     print("SMTP Username:", smtp_username)
     print("SMTP Password:", smtp_password)
+    print("SMTP subject:", subject)
+    print("SMTP message:", message)
 
     # Create message container.
     msg = MIMEMultipart()
