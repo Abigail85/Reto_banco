@@ -32,7 +32,19 @@ public class AgendarCitaStepDefinitions {
 
     @Cuando("^agenda una cita para el servicio (.*)$")
     public void quiereAgendarUnaCita(String servicio) throws IOException {
-        theActorInTheSpotlight().attemptsTo(AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", servicio)).build()));
+        theActorInTheSpotlight().attemptsTo(
+                AgendaLaCita
+                        .paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", servicio))
+                                .build()));
+    }
+
+    @Cuando("^agenda una cita para un usuario identificación para el servicio (.*)$")
+    public void agendarCitaParaUsuarioConNit(String servicio) throws IOException {
+        theActorInTheSpotlight()
+                .attemptsTo(
+                        AgendaLaCita
+                                .paraUnUsuarioConIdentificacionTipoNit(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", servicio))
+                                        .build()));
     }
 
     @Cuando("agenda una cita para tramitar diferentes servicios")
@@ -42,7 +54,6 @@ public class AgendarCitaStepDefinitions {
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
-        System.out.println("texto " + LBL_CONFIRMACION_DE_CITA.resolveFor(theActorInTheSpotlight()).getText());
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
     }
 }
