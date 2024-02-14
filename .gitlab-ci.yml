@@ -45,8 +45,11 @@ notify_email:
       revisa los resultados en el artefacto generado. Si tienes alguna 
       pregunta, no dudes en contactarnos.
   script:
-    - python send_email.py "$EMAIL_SUBJECT" "$EMAIL_MESSAGE"
+    - python send_email.py "$EMAIL_SUBJECT" "$EMAIL_MESSAGE" > send_email.log 2>&1
   when: always
+  artifacts:
+    paths:
+      - send_email.log
   #needs:
   #  - job: test-automation
   #    artifacts: true
