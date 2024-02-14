@@ -49,9 +49,15 @@ public class AgendarCitaPage {
     public static final Target TXT_INGRESAR_HORA_DESEADA = Target.the("Ingresa la hora deseada para la cita")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_HORA_SELECCIONADA = Target.the("Selecciona la hora para la cita")
-            .locatedBy("//li[contains(text(),'16:00')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target BTN_GUARDAR = Target.the("Selecciona el bot\u00F3n guardar")
             .locatedBy("//button[contains(text(),'Guardar')]");
     public static final Target LBL_CONFIRMACION_DE_CITA = Target.the("El mensaje de confirmaci\u00F3n de la cita")
             .locatedBy("//div[contains(text(),'La cita')]");
+    public static final Target TXT_RAZON_SOCIAL = Target.the("Ingresa la raz\u00F3n social del solicitante")
+            .located(By.id("nombres"));
+    public static final Target LBL_FOCO_TIPO_DOCUMENTO = Target.the("")
+            .locatedBy("(//label[contains(text(),'Tipo de documento')])[1]");
+    public static final Target TXT_SIGLA = Target.the("Ingresa la sigla del solicitante")
+            .located(By.id("juridica"));
 }

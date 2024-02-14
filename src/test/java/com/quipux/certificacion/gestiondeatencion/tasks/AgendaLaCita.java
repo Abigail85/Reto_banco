@@ -31,7 +31,27 @@ public class AgendaLaCita {
                             AgregarServicio.requerido(usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
-                            Hit.the(Keys.TAB).keyIn(TXT_FECHA_REQUERIDA),
+                            SeleccionarHorario.disponible(),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                    );
+                }
+        );
+    }
+
+    public static Performable paraUnUsuarioConIdentificacionTipoNit(Usuario usuario) {
+        return Task.where("{0} completa el formulario para agendar cita",
+                actor -> {
+                    actor.attemptsTo(
+                            SeleccionarAgendarCita.paraElServicio(),
+                            Click.on(BTN_AGENDAR_CITA),
+                            SeleccionarSubSede.paraAgendarLaCita(),
+                            DiligenciarFormulario.paraUnUsuarioConIdentificacionTipoNit(usuario),
+                            Click.on(BTN_CONTINUAR),
+                            AgregarServicio.requerido(usuario.getServicio()),
+                            Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
+                            Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),

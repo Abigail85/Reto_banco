@@ -38,7 +38,7 @@ public class DiligenciarFormulario {
                             Click.on(DDL_TIPO_DE_DOCUMENTO),
                             Enter.theValue("CEDULA CIUDADANIA").into(TXT_TIPO_DE_DOCUMENTO),
                             Click.on(LST_DOCUMENTO.of("CEDULA CIUDADANIA")),
-                            Enter.theValue("1017210089").into(TXT_NUMERO_DOCUMENTO),
+                            Enter.theValue("1037212189").into(TXT_NUMERO_DOCUMENTO),
                             Click.on(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Juliancho").into(TXT_PRIMER_NOMBRE),
                             Enter.theValue("Andres").into(TXT_SEGUNDO_NOMBRE),
@@ -47,6 +47,25 @@ public class DiligenciarFormulario {
                             Enter.theValue("pruebaproductomx53@yopmail.com").into(TXT_CORREO_ELECTRONICO),
                             Enter.theValue("3146896598").into(TXT_NUMERO_TELEFONICO),
                             Enter.theValue("calle medellín").into(TXT_DIRECCION_DE_RESIDENCIA)
+                    );
+                }
+        );
+    }
+
+    public static Performable paraUnUsuarioConIdentificacionTipoNit(Usuario usuario) {
+        return Task.where("{0} diligencia el formulario del solicitante",
+                actor -> {
+                    actor.attemptsTo(
+                            Click.on(DDL_TIPO_DE_DOCUMENTO),
+                            Enter.theValue(usuario.getTipoDocumento()).into(TXT_TIPO_DE_DOCUMENTO),
+                            Click.on(LST_DOCUMENTO.of(usuario.getTipoDocumento())),
+                            Enter.theValue(usuario.getNumeroDocumento()).into(TXT_NUMERO_DOCUMENTO),
+                            Click.on(LBL_FOCO_TIPO_DOCUMENTO),
+                            Enter.theValue(usuario.getPrimerNombre()).into(TXT_RAZON_SOCIAL),
+                            Enter.theValue(usuario.getSegundoNombre()).into(TXT_SIGLA),
+                            Enter.theValue(usuario.getCorreoElectronico()).into(TXT_CORREO_ELECTRONICO),
+                            Enter.theValue(usuario.getNumeroDeTelefono()).into(TXT_NUMERO_TELEFONICO),
+                            Enter.theValue(usuario.getDireccionResidencia()).into(TXT_DIRECCION_DE_RESIDENCIA)
                     );
                 }
         );

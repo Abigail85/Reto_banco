@@ -2,6 +2,7 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
+import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -24,7 +25,7 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotP
 public class AgregarMultiplesServicios {
 
     public static Performable requeridos(List<Map<String, String>> servicios) {
-        return Task.where("",
+        return Task.where("{0} selecciona los servicios requeridos",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
@@ -36,12 +37,11 @@ public class AgregarMultiplesServicios {
                     for (int i = 0; i < servicios.size(); i++) {
                         actor.attemptsTo(
                                 AgregarServicio
-                                        .prueba(servicios.get(i).get("entidadPrestadora"), servicios.get(i).get("servicio")));
+                                        .prueba(servicios.get(i).get("EntidadPrestadoraDeServicio"), servicios.get(i).get("ServicioRequerido")));
                     }
                     actor.attemptsTo(
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
-                            Enter.theValue("14/02/2024").into(TXT_FECHA_REQUERIDA));
-                    actor.attemptsTo(
+                            Enter.theValue("14/02/2024").into(TXT_FECHA_REQUERIDA),
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
