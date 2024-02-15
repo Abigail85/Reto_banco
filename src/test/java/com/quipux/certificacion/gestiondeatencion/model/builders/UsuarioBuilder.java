@@ -121,4 +121,5 @@ public class UsuarioBuilder implements Builder<Usuario> {
     public Usuario build() {
         return new Usuario(this);
     }
+
 }

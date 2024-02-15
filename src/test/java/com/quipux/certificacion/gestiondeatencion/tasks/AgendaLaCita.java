@@ -25,7 +25,7 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(),
+                            SeleccionarSubSede.paraAgendarLaCita("sh subsede 1"),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getServicio()),

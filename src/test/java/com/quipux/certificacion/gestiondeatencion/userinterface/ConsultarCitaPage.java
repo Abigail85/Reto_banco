@@ -17,7 +17,7 @@ public class ConsultarCitaPage {
             .located(By.cssSelector("input[role='textbox']"));
 
     public static final Target LST_CRITERIO_BUSQUEDA = Target.the("Tipo de consulta")
-            .locatedBy("//li[contains(text(),'Documento')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
 
     public static final Target BTN_BUSCAR = Target.the("Bot\u00F3n de consulta")
             .locatedBy(".btn.btn-primary.btn-block.ng-binding");

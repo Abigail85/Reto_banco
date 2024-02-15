@@ -33,8 +33,6 @@ public class Usuario {
         this.servicio = usuarioBuilder.getUsuarios().get(0).getServicio();
     }
 
-
-
     public String getUsuario() {
         return usuario;
     }
@@ -86,4 +84,5 @@ public class Usuario {
     public String getFechaCita() {
         return fechaCita;
     }
+
 }
