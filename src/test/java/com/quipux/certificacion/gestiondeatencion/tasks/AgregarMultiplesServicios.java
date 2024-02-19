@@ -2,6 +2,7 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
+import com.quipux.certificacion.gestiondeatencion.model.Usuario;
 import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -24,14 +25,14 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotP
 
 public class AgregarMultiplesServicios {
 
-    public static Performable requeridos(List<Map<String, String>> servicios) {
+    public static Performable requeridos(List<Map<String, String>> servicios, Usuario usuario) {
         return Task.where("{0} selecciona los servicios requeridos",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
                             SeleccionarSubSede.paraAgendarLaCita(),
-                            DiligenciarFormulario.delSolicitante2(),
+                            DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR)
                     );
                     for (int i = 0; i < servicios.size(); i++) {
