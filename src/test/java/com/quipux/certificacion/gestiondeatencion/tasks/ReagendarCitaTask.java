@@ -2,6 +2,7 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 
 import com.quipux.certificacion.gestiondeatencion.interactions.ElementoPresente;
 import com.quipux.certificacion.gestiondeatencion.interactions.ObtenerTextoElemento;
+import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.model.Usuario;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -29,8 +30,8 @@ public class ReagendarCitaTask {
 
                     if (menNoInfor == true){
                         actor.attemptsTo(
-                                AgendaLaCita.paraUnServicioRequerido(usuario)
-                                //ConsultarCita.consultarCita(usuario)
+                                AgendaLaCita.paraUnServicioRequerido(usuario),
+                                ConsultarCita.consultarCita(usuario)
                         );
                     }
 
@@ -43,8 +44,7 @@ public class ReagendarCitaTask {
                             WaitUntil.the(TXT_REASIGNAR_FECHA, isVisible()).forNoMoreThan(2).seconds(),
                             Enter.theValue(nuevaFecha(fecha)).into(TXT_REASIGNAR_FECHA),
                             Hit.the(Keys.TAB).into(TXT_REASIGNAR_FECHA),
-                            Hit.the(Keys.ENTER).into(LST_HORARIO_DISPONIBLE),
-                            //SeleccionarHorario.disponible(),
+                            SeleccionarHorario.disponible(),
                             Click.on(LST_MOTIVO),
                             Enter.theValue(usuario.getMotivo()).into(TXT_MOTIVO),
                             Click.on(LST_MOTIVO_SELECT.of(usuario.getMotivo())),
