@@ -3,7 +3,7 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 import com.quipux.certificacion.gestiondeatencion.interactions.ElementoPresente;
 import com.quipux.certificacion.gestiondeatencion.interactions.ObtenerTextoElemento;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
-import com.quipux.certificacion.gestiondeatencion.model.Usuario;
+import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.*;
@@ -16,7 +16,7 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 
 public class ReagendarCitaTask {
 
-    public static Performable reagendarCita(Usuario usuario) {
+    public static Performable reagendarCita(AgendarCita usuario) {
 
         return Task.where("{0} completa el formulario para reagendar cita",
                 actor -> {

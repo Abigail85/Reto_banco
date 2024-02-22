@@ -1,65 +1,64 @@
 package com.quipux.certificacion.gestiondeatencion.model.builders;
 
-import com.quipux.certificacion.gestiondeatencion.model.Servicio;
-import com.quipux.certificacion.gestiondeatencion.model.Usuario;
+import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
 import com.quipux.certificacion.gestiondeatencion.utils.Builder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static com.quipux.certificacion.gestiondeatencion.model.builders.ServicioBuilder.con;
-
-public class UsuarioBuilder implements Builder<Usuario> {
+public class AgendarCitaBuilder implements Builder<AgendarCita> {
+    private String subSede;
+    private String tipoDocumento;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
-    private String tipoDocumento;
-    private String numeroDocumento;
-    private Servicio servicio;
     private String correoElectronico;
     private String numeroDeTelefono;
     private String direccionResidencia;
+    private String entidadPrestadora;
+    private String servicio;
     private String fechaCita;
     private String usuario;
     private String contrasena;
     private String criterioBusqueda;
-    private String subSede;
     private String motivo;
-    private List<UsuarioBuilder> usuarios = new ArrayList<>();
+    private List<AgendarCitaBuilder> usuarios = new ArrayList<>();
 
-    public UsuarioBuilder(Map<String, String> datosDeUsuario) {
+    public AgendarCitaBuilder(Map<String, String> datosDeUsuario) {
+        this.subSede = datosDeUsuario.get("subSede");
+        this.tipoDocumento = datosDeUsuario.get("tipoDocumento");
         this.primerNombre = datosDeUsuario.get("primerNombre");
         this.segundoNombre = datosDeUsuario.get("segundoNombre");
         this.primerApellido = datosDeUsuario.get("primerApellido");
         this.segundoApellido = datosDeUsuario.get("segundoApellido");
-        this.tipoDocumento = datosDeUsuario.get("tipoDocumento");
-        this.numeroDocumento = datosDeUsuario.get("numeroDocumento");
         this.correoElectronico = datosDeUsuario.get("correoElectronico");
         this.numeroDeTelefono = datosDeUsuario.get("numeroDeTelefono");
         this.direccionResidencia = datosDeUsuario.get("direccionResidencia");
+        this.entidadPrestadora = datosDeUsuario.get("entidadPrestadora");
+        this.servicio = datosDeUsuario.get("filtro");
         this.fechaCita = datosDeUsuario.get("fechaCita");
         this.usuario = datosDeUsuario.get("usuario");
         this.contrasena = datosDeUsuario.get("contrasena");
-        this.servicio = con()
-                .laEntidadPrestadora(datosDeUsuario.get("entidadPrestadora"))
-                .yElServicio(datosDeUsuario.get("filtro")).build();
         this.criterioBusqueda = datosDeUsuario.get("criterioBusqueda");
-        this.subSede = datosDeUsuario.get("subSede");
         this.motivo = datosDeUsuario.get("motivo");
     }
 
-    public UsuarioBuilder(List<Map<String, String>> datosDeUsuario) {
+    public AgendarCitaBuilder(List<Map<String, String>> datosDeUsuario) {
         crearConstructor(datosDeUsuario);
     }
 
-    public static UsuarioBuilder deUsuario(List<Map<String, String>> datosDeUsuario) {
-        return new UsuarioBuilder(datosDeUsuario);
+    public static AgendarCitaBuilder deUsuario(List<Map<String, String>> datosDeUsuario) {
+        return new AgendarCitaBuilder(datosDeUsuario);
     }
 
-    public static UsuarioBuilder conLosDatosDelUsuario(List<Map<String, String>> datosDeUsuario) {
-        return new UsuarioBuilder(datosDeUsuario);
+    public static AgendarCitaBuilder conLosDatosDelUsuario(List<Map<String, String>> datosDeUsuario) {
+        return new AgendarCitaBuilder(datosDeUsuario);
+    }
+
+    public String getSubSede() {
+        return subSede;
     }
 
     public String getPrimerNombre() {
@@ -82,11 +81,11 @@ public class UsuarioBuilder implements Builder<Usuario> {
         return tipoDocumento;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public String getEntidadPrestadora() {
+        return entidadPrestadora;
     }
 
-    public Servicio getServicio() {
+    public String getServicio() {
         return servicio;
     }
 
@@ -118,26 +117,21 @@ public class UsuarioBuilder implements Builder<Usuario> {
         return criterioBusqueda;
     }
 
-    public String getSubSede() {
-        return subSede;
-    }
-
     public String getMotivo() {
         return motivo;
     }
 
-    public List<UsuarioBuilder> getUsuarios() {
+    public List<AgendarCitaBuilder> getUsuarios() {
         return usuarios;
     }
 
     private void crearConstructor(List<Map<String, String>> datosDeUsuario) {
         for (Map<String, String> datoDeUsuario : datosDeUsuario)
-            usuarios.add(new UsuarioBuilder(datoDeUsuario));
+            usuarios.add(new AgendarCitaBuilder(datoDeUsuario));
     }
 
     @Override
-    public Usuario build() {
-        return new Usuario(this);
+    public AgendarCita build() {
+        return new AgendarCita(this);
     }
-
 }

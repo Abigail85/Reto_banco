@@ -10,10 +10,10 @@ import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCi
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SeleccionarSubSede implements Performable {
-    private String subsede;
+    private String subSede;
 
-    public SeleccionarSubSede(String subsede) {
-        this.subsede = subsede;
+    public SeleccionarSubSede(String subSede) {
+        this.subSede = subSede;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class SeleccionarSubSede implements Performable {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Click.on(DDL_SUB_SEDE),
-                Enter.theValue(subsede).into(TXT_INGRESAR_SUB_SEDE),
-                Click.on(LST_SUB_SEDE.of(subsede))
+                Enter.theValue().into(TXT_INGRESAR_SUB_SEDE),
+                Click.on(LST_SUB_SEDE)
         );
     }
 
-    public static SeleccionarSubSede paraAgendarLaCita(String subsede) {
-        return instrumented(SeleccionarSubSede.class, subsede);
+    public static SeleccionarSubSede paraAgendarLaCita(String subSede) {
+        return instrumented(SeleccionarSubSede.class, subSede);
     }
 }
