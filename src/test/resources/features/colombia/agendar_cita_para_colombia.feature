@@ -33,7 +33,8 @@ Característica: Agendar citas por medio de la pagina web
       | Secretaría Movilidad Medellín | Duplicado licencia de conducción moto |
     Entonces debe ver que la cita fue agendada de forma exitosa
 
+  @camposObligatorios
   Escenario: Agendar cita con campos obligatorios
     Dado que el usuario se encuentra en la pagina web de Shopping GA
-    Cuando agenda una cita con campos obligatorios
+    Cuando agenda una cita diligenciando los campos requeridos para el servicio Lavado de carro
     Entonces debe ver que la cita fue agendada de forma exitosa
