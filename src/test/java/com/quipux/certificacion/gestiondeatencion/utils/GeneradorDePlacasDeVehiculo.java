@@ -29,4 +29,15 @@ public class GeneradorDePlacasDeVehiculo {
 
         return nuevoNumero;
     }
+
+    public static String generarNumeroDocumento() {
+        char[] digitos = "1234567890".toCharArray();
+        String numeroDocumento = "";
+        SecureRandom random = new SecureRandom();
+
+        for (int i = 0; i < 10; i++)
+            numeroDocumento = numeroDocumento + digitos[random.nextInt(digitos.length)];
+
+        return numeroDocumento;
+    }
 }

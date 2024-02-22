@@ -5,6 +5,7 @@ Característica: Agendar citas por medio de la pagina web
   Quiero poder agendar citas
   Para tramitar servicios relacionados con mi vehículo
 
+  @prueba
   Escenario: Agendar cita exitosa para un usuario con Cédula de ciudadania
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita para el servicio Cambio de matricula
