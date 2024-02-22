@@ -1,4 +1,4 @@
-package com.quipux.certificacion.gestiondeatencion.interactions;
+package com.quipux.certificacion.gestiondeatencion.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

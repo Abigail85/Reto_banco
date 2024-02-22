@@ -10,8 +10,7 @@ import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
 
-import static com.quipux.certificacion.gestiondeatencion.interactions.FechaDinamica.*;
-import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LST_HORARIO_DISPONIBLE;
+import static com.quipux.certificacion.gestiondeatencion.utils.FechaDinamica.*;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.ReagendarCitaPage.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
