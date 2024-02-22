@@ -16,6 +16,9 @@ public class Usuario {
     private final String fechaCita;
     private final String usuario;
     private final String contrasena;
+    private final String criterioBusqueda;
+    private final String subSede;
+    private final String motivo;
 
     public Usuario(UsuarioBuilder usuarioBuilder) {
         this.primerNombre = usuarioBuilder.getUsuarios().get(0).getPrimerNombre();
@@ -31,6 +34,9 @@ public class Usuario {
         this.usuario = usuarioBuilder.getUsuarios().get(0).getUsuario();
         this.contrasena = usuarioBuilder.getUsuarios().get(0).getContrasena();
         this.servicio = usuarioBuilder.getUsuarios().get(0).getServicio();
+        this.criterioBusqueda = usuarioBuilder.getUsuarios().get(0).getCriterioBusqueda();
+        this.subSede = usuarioBuilder.getUsuarios().get(0).getSubSede();
+        this.motivo = usuarioBuilder.getUsuarios().get(0).getMotivo();
     }
 
     public String getUsuario() {
@@ -85,4 +91,15 @@ public class Usuario {
         return fechaCita;
     }
 
+    public String getCriterioBusqueda() {
+        return criterioBusqueda;
+    }
+
+    public String getSubSede() {
+        return subSede;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
 }

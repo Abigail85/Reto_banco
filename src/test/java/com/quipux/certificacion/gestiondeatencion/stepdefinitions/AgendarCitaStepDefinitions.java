@@ -37,7 +37,7 @@ public class AgendarCitaStepDefinitions {
     public void reagendaLaCitaParaElServicioCambioDeMatricula(String tipoDeServicio) throws IOException {
         theActorInTheSpotlight()
                 .attemptsTo(
-                        ConsultarCita.consultarCita(conLosDatosDelUsuario(obtenerDatosDeCsv("consultar_cita", tipoDeServicio)).build()),
+                        ///ConsultarCita.consultarCita(conLosDatosDelUsuario(obtenerDatosDeCsv("consultar_cita", tipoDeServicio)).build())
                         ReagendarCitaTask.reagendarCita(conLosDatosDelUsuario(obtenerDatosDeCsv("reagendar_cita", tipoDeServicio)).build())
                 );
     }

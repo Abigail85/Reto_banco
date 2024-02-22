@@ -1,9 +1,14 @@
 package com.quipux.certificacion.gestiondeatencion.userinterface;
 
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.questions.Text;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
 public class ReagendarCitaPage {
+
+    public static final Target TABLE_FECHA_INI = Target.the("Fecha inicial en la tabla")
+            .locatedBy("tr[role='row'] td:nth-child(2)");
 
     public static final Target BTN_REASIGNAR_CITA = Target.the("Bot\u00F3n para reasignar cita")
             .locatedBy("//button[@title='Reasignar']");
@@ -21,13 +26,12 @@ public class ReagendarCitaPage {
             .locatedBy("(//input[@role='textbox'])[1]");
 
     public static final Target LST_MOTIVO_SELECT = Target.the("Selecciona el motivo")
-            .locatedBy("//li[contains(text(),'Adelantar')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
 
     public static final Target BTN_SI = Target.the("Bot\u00F3n para continuar")
             .locatedBy("(//button[@ng-click='consultarAgendaController.reasignarCita()'])[1]");
 
-    public static final Target TABLE_FECHA = Target.the("Fecha de la cita")
-            .locatedBy("//td[normalize-space()='19/02/2024 16:00']");
-
+    public static final Target LBL_VALIDACION_DE_CONSULTAR_CITA = Target.the("El mensaje de validac\u00F3n si no hay citas agendadas")
+            .locatedBy("//div[contains(text(),'No se')]");
 
 }

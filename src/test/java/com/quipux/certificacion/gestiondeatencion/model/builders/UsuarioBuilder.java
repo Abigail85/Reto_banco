@@ -24,6 +24,9 @@ public class UsuarioBuilder implements Builder<Usuario> {
     private String fechaCita;
     private String usuario;
     private String contrasena;
+    private String criterioBusqueda;
+    private String subSede;
+    private String motivo;
     private List<UsuarioBuilder> usuarios = new ArrayList<>();
 
     public UsuarioBuilder(Map<String, String> datosDeUsuario) {
@@ -42,6 +45,9 @@ public class UsuarioBuilder implements Builder<Usuario> {
         this.servicio = con()
                 .laEntidadPrestadora(datosDeUsuario.get("entidadPrestadora"))
                 .yElServicio(datosDeUsuario.get("filtro")).build();
+        this.criterioBusqueda = datosDeUsuario.get("criterioBusqueda");
+        this.subSede = datosDeUsuario.get("subSede");
+        this.motivo = datosDeUsuario.get("motivo");
     }
 
     public UsuarioBuilder(List<Map<String, String>> datosDeUsuario) {
@@ -106,6 +112,18 @@ public class UsuarioBuilder implements Builder<Usuario> {
 
     public String getContrasena() {
         return contrasena;
+    }
+
+    public String getCriterioBusqueda() {
+        return criterioBusqueda;
+    }
+
+    public String getSubSede() {
+        return subSede;
+    }
+
+    public String getMotivo() {
+        return motivo;
     }
 
     public List<UsuarioBuilder> getUsuarios() {
