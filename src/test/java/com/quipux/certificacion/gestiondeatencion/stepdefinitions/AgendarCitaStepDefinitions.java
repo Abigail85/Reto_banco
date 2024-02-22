@@ -3,22 +3,17 @@ package com.quipux.certificacion.gestiondeatencion.stepdefinitions;
 import com.quipux.certificacion.gestiondeatencion.tasks.AgendaLaCita;
 import com.quipux.certificacion.gestiondeatencion.tasks.AgregarMultiplesServicios;
 import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
-import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static com.quipux.certificacion.gestiondeatencion.model.builders.UsuarioBuilder.conLosDatosDelUsuario;
-import static com.quipux.certificacion.gestiondeatencion.model.builders.UsuarioBuilder.deUsuario;
+import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.conLosDatosDelUsuario;
+import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.deUsuario;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
 import static com.quipux.certificacion.gestiondeatencion.utils.UtileriaCsv.obtenerDatosDeCsv;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;

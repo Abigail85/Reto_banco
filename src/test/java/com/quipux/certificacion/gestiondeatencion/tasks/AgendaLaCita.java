@@ -2,13 +2,11 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
-import com.quipux.certificacion.gestiondeatencion.model.Usuario;
+import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -19,16 +17,16 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotP
 
 public class AgendaLaCita {
 
-    public static Performable paraUnServicioRequerido(Usuario usuario) {
+    public static Performable paraUnServicioRequerido(AgendarCita usuario) {
         return Task.where("{0} completa el formulario para agendar cita",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(),
+                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
-                            AgregarServicio.requerido(usuario.getServicio()),
+                            AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
                             SeleccionarHorario.disponible(),
@@ -40,16 +38,16 @@ public class AgendaLaCita {
         );
     }
 
-    public static Performable paraUnUsuarioConIdentificacionTipoNit(Usuario usuario) {
+    public static Performable paraUnUsuarioConIdentificacionTipoNit(AgendarCita usuario) {
         return Task.where("{0} completa el formulario para agendar cita",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(),
+                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
                             DiligenciarFormulario.paraUnUsuarioConIdentificacionTipoNit(usuario),
                             Click.on(BTN_CONTINUAR),
-                            AgregarServicio.requerido(usuario.getServicio()),
+                            AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
                             SeleccionarHorario.disponible(),

@@ -2,16 +2,13 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
-import com.quipux.certificacion.gestiondeatencion.model.Usuario;
-import net.serenitybdd.model.time.InternalSystemClock;
+import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.Hit;
 import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.util.List;
@@ -25,20 +22,20 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotP
 
 public class AgregarMultiplesServicios {
 
-    public static Performable requeridos(List<Map<String, String>> servicios, Usuario usuario) {
+    public static Performable requeridos(List<Map<String, String>> servicios, AgendarCita usuario) {
         return Task.where("{0} selecciona los servicios requeridos",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(),
+                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR)
                     );
                     for (int i = 0; i < servicios.size(); i++) {
                         actor.attemptsTo(
                                 AgregarServicio
-                                        .prueba(servicios.get(i).get("EntidadPrestadoraDeServicio"), servicios.get(i).get("ServicioRequerido")));
+                                        .requerido(servicios.get(i).get("EntidadPrestadoraDeServicio"), servicios.get(i).get("ServicioRequerido")));
                     }
                     actor.attemptsTo(
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
