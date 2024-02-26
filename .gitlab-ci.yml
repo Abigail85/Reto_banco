@@ -57,8 +57,6 @@ test-automation:
 
 google_notification:
   variables:
-    ARTIFACT_JOB_ID: $(bash utils/calculate_previous_job_id.sh $CI_JOB_ID)
-    ARTIFACT_URL: "https://git.quipux.com/test-automation/gestion-de-la-atencion/-/jobs/$(bash utils/calculate_previous_job_id.sh 232456)/artifacts/download?file_type=archive"
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
       **Resultados de Pruebas Automatizadas**
@@ -70,8 +68,11 @@ google_notification:
   stage: notify
   image: python:3.9
   script:
+    - previous_job_id=$((CI_JOB_ID - 1))
+    - echo $previous_job_id
+    - artifact_url="https://git.quipux.com/test-automation/gestion-de-la-atencion/-/jobs/$previous_job_id/artifacts/download?file_type=archive"
     - pip install requests
-    - python utils/notificacion_google.py "$EMAIL_MESSAGE" "$GOOGLE_CHAT_API_KEY" > send_email.log 2>&1
+    - python utils/notificacion_google.py "$EMAIL_MESSAGE" "$GOOGLE_CHAT_API_KEY" "$artifact_url" > send_email.log 2>&1
   when: always
   needs:
     - job: test-automation

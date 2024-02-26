@@ -1,9 +1,11 @@
 import requests
 import json
 
-def enviar_notificacion(mensaje, api_key):
+def enviar_notificacion(mensaje, api_key, artifact_url):
     url = "https://chat.googleapis.com/v1/spaces/AAAA2XR_Dic/messages?key=" + api_key
     headers = {"Content-Type": "application/json"}
+    mensaje = mensaje + artifact_url
+    print("mensaje:", mensaje)
     data = {"text": mensaje}
     response = requests.post(url, headers=headers, data=json.dumps(data))
     
@@ -20,5 +22,6 @@ if __name__ == "__main__":
 
     mensaje = sys.argv[1]
     api_key = sys.argv[2]
+    artifact_url =  sys.argv[3]
 
-    enviar_notificacion(mensaje, api_key)
+    enviar_notificacion(mensaje, api_key, artifact_url)
