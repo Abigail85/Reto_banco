@@ -56,10 +56,11 @@ test-automation:
 
 google_notification:
   variables:
+    ARTIFACT_URL: "$CI_JOB_URL/artifacts/raw/target/"
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
       Las pruebas automatizadas han finalizado correctamente. Por favor, 
-      revisa los resultados en el artefacto generado. Si tienes alguna 
+      revisa los resultados en el artefacto generado: $ARTIFACT_URL Si tienes alguna 
       pregunta, no dudes en contactarnos.
   stage: notify
   image: python:3.9
