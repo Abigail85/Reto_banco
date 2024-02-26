@@ -25,7 +25,7 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().wasAbleTo(Autenticarse.conLasCredenciales(deUsuario(obtenerDatosDeCsv("autenticacion", "")).build()));
     }
 
-    @Cuando("^agenda una cita para el servicio (.*)$")
+    @Cuando("agenda una cita para el servicio {string}")
     public void quiereAgendarUnaCita(String servicio) throws IOException {
         theActorInTheSpotlight().attemptsTo(
                 AgendaLaCita
@@ -33,7 +33,34 @@ public class AgendarCitaStepDefinitions {
                                 .build()));
     }
 
-    @Cuando("^agenda una cita para un usuario identificación para el servicio (.*)$")
+    @Cuando("agenda una cita para un usuario que posee nit para el servicio {string}")
+    public void agendaUnaCitaParaUnUsuarioQuePoseeNitParaElServicio(String servicio) throws IOException {
+        theActorInTheSpotlight()
+                .attemptsTo(
+                        AgendaLaCita
+                                .paraUnUsuarioConIdentificacionTipoNit(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_tipo_nit", servicio))
+                                        .build()));
+    }
+
+    @Cuando("agenda una cita para un usuario que posee rut para el servicio {string}")
+    public void agendaUnaCitaParaUnUsuarioQuePoseeRutParaElServicio(String servicio) throws IOException {
+        theActorInTheSpotlight()
+                .attemptsTo(
+                        AgendaLaCita
+                                .paraUnUsuarioConIdentificacionTipoNit(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_tipo_rut", servicio))
+                                        .build()));
+    }
+
+    @Cuando("agenda una cita para un usuario que posee cnpj para el servicio {string}")
+    public void agendaUnaCitaParaUnUsuarioQuePoseeCnpjParaElServicio(String servicio) throws IOException {
+        theActorInTheSpotlight()
+                .attemptsTo(
+                        AgendaLaCita
+                                .paraUnUsuarioConIdentificacionTipoNit(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_tipo_cnpj", servicio))
+                                        .build()));
+    }
+
+    @Cuando("agenda una cita para un usuario identificación para el servicio {string}")
     public void agendarCitaParaUsuarioConNit(String servicio) throws IOException {
         theActorInTheSpotlight()
                 .attemptsTo(
