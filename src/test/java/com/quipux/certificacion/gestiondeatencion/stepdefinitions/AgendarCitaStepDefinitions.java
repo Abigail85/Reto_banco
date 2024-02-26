@@ -60,8 +60,16 @@ public class AgendarCitaStepDefinitions {
         );
     }
 
+    @Cuando("^cancela una cita para el servicio (.*)$")
+    public void cancelaUnaCitaParaElServicio() {
+    }
+
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
+    }
+
+    @Entonces("debe ver que la cita fue cancelada exitosamente")
+    public void debeVerQueLaCitaFueCanceladaExitosamente() {
     }
 }
