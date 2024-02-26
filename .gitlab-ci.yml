@@ -57,7 +57,7 @@ test-automation:
 
 google_notification:
   variables:
-    ARTIFACT_URL: "$CI_JOB_URL/artifacts/download?file_type=archive"
+    ARTIFACT_URL: "https://git.quipux.com/test-automation/gestion-de-la-atencion/-/jobs/$(($CI_JOB_ID - 1))/artifacts/download?file_type=archive"
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
       **Resultados de Pruebas Automatizadas**
