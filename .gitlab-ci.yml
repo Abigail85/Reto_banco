@@ -54,3 +54,17 @@ notify_email:
   needs:
     - job: test-automation
       artifacts: true
+
+send_notification:
+  stage: notify
+  script:
+    - apk add --update curl
+    - curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $GOOGLE_CHAT_API_KEY" \
+      -d '{"text": "Este es un mensaje de prueba desde GitLab CI."}' \
+      "https://chat.googleapis.com/v1/spaces/AAAA2XR_Dic/messages"
+  only:
+    - feature/notify-google
+
+    
