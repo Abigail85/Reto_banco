@@ -47,10 +47,10 @@ Característica: Agendar citas por medio de la pagina web
   Escenario: Agendar cita multitramite
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita para tramitar diferentes servicios
-      | EntidadPrestadoraDeServicio   | ServicioRequerido                     |
-      | Quipux                        | Venta                                 |
-      | Alcaldía de Medellín          | Cambio de matricula                   |
-      | Secretaría Movilidad Medellín | Duplicado licencia de conducción moto |
+      | EntidadPrestadoraDeServicio | ServicioRequerido |
+      | Alcaldía de Medellín        | Lavado de carro   |
+      | Alcaldía de Medellín        | Lavado de carro   |
+      | Alcaldía de Medellín        | Lavado de carro   |
     Entonces debe ver que la cita fue agendada de forma exitosa
 
   @agendarCitaSinPlacaVehiculo
