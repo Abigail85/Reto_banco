@@ -62,9 +62,8 @@ google_notification:
       **Resultados de Pruebas Automatizadas**
       
       Las pruebas automatizadas han finalizado correctamente. Por favor, 
-      revisa los resultados en el artefacto generado: [Descargar Artefacto]($ARTIFACT_URL). 
+      revisa los resultados en el artefacto generado:
       
-      Si tienes alguna pregunta, no dudes en contactarnos.
   stage: notify
   image: python:3.9
   script:
