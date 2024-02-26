@@ -4,6 +4,7 @@ include:
   ref: 'development'
   file:
     - static-code-analysis/sonar-java.yml
+    - devsecops/sast.yml
 
 stages:
   - codequality
@@ -56,12 +57,15 @@ test-automation:
 
 google_notification:
   variables:
-    ARTIFACT_URL: "$CI_JOB_URL/artifacts/raw/target/"
+    ARTIFACT_URL: "$CI_JOB_URL/artifacts/download?file_type=archive"
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
+      **Resultados de Pruebas Automatizadas**
+      
       Las pruebas automatizadas han finalizado correctamente. Por favor, 
-      revisa los resultados en el artefacto generado: $ARTIFACT_URL Si tienes alguna 
-      pregunta, no dudes en contactarnos.
+      revisa los resultados en el artefacto generado: [Descargar Artefacto]($ARTIFACT_URL). 
+      
+      Si tienes alguna pregunta, no dudes en contactarnos.
   stage: notify
   image: python:3.9
   script:
