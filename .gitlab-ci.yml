@@ -13,7 +13,8 @@ google_notification:
   script:
     - pip install requests
     - python utils/notificacion_google.py "$EMAIL_MESSAGE" "$GOOGLE_CHAT_API_KEY" > send_email.log 2>&1
-  when: feature/notify-google
+  only:
+    - feature/notify-google
   artifacts:
     paths:
       - send_email.log
