@@ -4,9 +4,7 @@ include:
   ref: 'development'
   file:
     - static-code-analysis/sonar-java.yml
-
-variables:
-  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+    - devsecops/sast.yml
 
 stages:
   - codequality
@@ -36,21 +34,52 @@ test-automation:
   allow_failure: true
   when: always
 
-notify_email:
-  stage: notify
-  image: python:3.9
+#notify_email:
+#  stage: notify
+#  image: python:3.9
+#  variables:
+#    EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
+#    EMAIL_MESSAGE: |
+#      Las pruebas automatizadas han finalizado correctamente. Por favor, 
+#      revisa los resultados en el artefacto generado. Si tienes alguna 
+#      pregunta, no dudes en contactarnos.
+#  script:
+#    - python utils/send_email.py "$EMAIL_SUBJECT" "$EMAIL_MESSAGE" > send_email.log 2>&1
+#  when: development
+#  artifacts:
+#    paths:
+#      - send_email.log
+#  needs:
+#    - job: test-automation
+#      artifacts: true
+#  tags:
+#    - gitlab-runner-docker
+
+google_notification:
   variables:
+    ARTIFACT_JOB_ID: $(($CI_JOB_ID - 1))
+    ARTIFACT_URL: "https://git.quipux.com/test-automation/gestion-de-la-atencion/-/jobs/$ARTIFACT_JOB_ID/artifacts/download?file_type=archive"
     EMAIL_SUBJECT: "Resultados de Pruebas Automatizadas"
     EMAIL_MESSAGE: |
+      **Resultados de Pruebas Automatizadas**
+      
       Las pruebas automatizadas han finalizado correctamente. Por favor, 
-      revisa los resultados en el artefacto generado. Si tienes alguna 
-      pregunta, no dudes en contactarnos.
+      revisa los resultados en el artefacto generado: [Descargar Artefacto]($ARTIFACT_URL). 
+      
+      Si tienes alguna pregunta, no dudes en contactarnos.
+  stage: notify
+  image: python:3.9
   script:
-    - python send_email.py "$EMAIL_SUBJECT" "$EMAIL_MESSAGE" > send_email.log 2>&1
+    - pip install requests
+    - python utils/notificacion_google.py "$EMAIL_MESSAGE" "$GOOGLE_CHAT_API_KEY" > send_email.log 2>&1
   when: always
-  artifacts:
-    paths:
-      - send_email.log
   needs:
     - job: test-automation
       artifacts: true
+  artifacts:
+    paths:
+      - send_email.log
+  tags:
+    - gitlab-runner-docker
+
+    
