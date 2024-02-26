@@ -51,6 +51,12 @@ Característica: Agendar citas por medio de la pagina web
       | Secretaría Movilidad Medellín | Duplicado licencia de conducción moto |
     Entonces debe ver que la cita fue agendada de forma exitosa
 
+  @agendarCitaSinPlacaVehiculo
+  Escenario: Agendar cita para un servicio que no solicita la placa del vehiculo
+    Dado que el usuario se encuentra en la pagina web de Shopping GA
+    Cuando agenda una cita sin incluir la placa del vehiculo para el servicio 'Venta'
+    Entonces debe ver que la cita fue agendada de forma exitosa
+
   @camposObligatorios
   Escenario: Agendar cita con campos obligatorios
     Dado que el usuario se encuentra en la pagina web de Shopping GA
@@ -60,5 +66,5 @@ Característica: Agendar citas por medio de la pagina web
   @agendarCitaConComentario
   Escenario: Agendar cita incluyendo un comentario
     Dado que el usuario se encuentra en la pagina web de Shopping GA
-    Cuando agenda una cita incluyendo un comentario para el servicio Lavado de carro
+    Cuando agenda una cita incluyendo un comentario para el servicio Cambio Color Vehiculo
     Entonces debe ver que la cita fue agendada de forma exitosa

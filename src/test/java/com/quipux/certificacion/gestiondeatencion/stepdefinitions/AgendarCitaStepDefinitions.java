@@ -51,6 +51,15 @@ public class AgendarCitaStepDefinitions {
                                         .build()));
     }
 
+    @Cuando("agenda una cita sin incluir la placa del vehiculo para el servicio {string}")
+    public void agendaUnaCitaSinIncluirLaPlacaDelVehiculoParaElServicio(String servicio) throws IOException {
+        theActorInTheSpotlight().attemptsTo(
+                AgendaLaCita
+                        .paraUnServicioSinPlacaDeVehiculo(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_sin_placa_de_vehiculo", servicio))
+                                .build())
+        );
+    }
+
     @Cuando("^agenda una cita diligenciando los campos requeridos para el servicio (.*)$")
     public void agendaUnaCitaDiligenciandoLosCamposRequeridos(String servicio) throws IOException {
         theActorInTheSpotlight().attemptsTo(
