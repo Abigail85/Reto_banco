@@ -5,3 +5,10 @@ Característica: Escenarios de brasil
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Quando agenda una cita para el servicio Cambio de matricula
     Entao debe ver que la cita fue agendada de forma exitosa
+
+
+  Cenario: Reagendar cita
+    Dado que el usuario se encuentra en la pagina web de Shopping GA
+    Quando reagenda la cita para el servicio Lavado de carro
+    Entao debe ver que la cita fue reagendada de forma exitosamente
+

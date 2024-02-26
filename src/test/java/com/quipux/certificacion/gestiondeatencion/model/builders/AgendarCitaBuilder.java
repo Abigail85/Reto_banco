@@ -22,8 +22,6 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
     private String fechaCita;
     private String usuario;
     private String contrasena;
-    private String criterioBusqueda;
-    private String motivo;
     private List<AgendarCitaBuilder> usuarios = new ArrayList<>();
 
     public AgendarCitaBuilder(Map<String, String> datosDeUsuario) {
@@ -41,8 +39,6 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
         this.fechaCita = datosDeUsuario.get("fechaCita");
         this.usuario = datosDeUsuario.get("usuario");
         this.contrasena = datosDeUsuario.get("contrasena");
-        this.criterioBusqueda = datosDeUsuario.get("criterioBusqueda");
-        this.motivo = datosDeUsuario.get("motivo");
     }
 
     public AgendarCitaBuilder(List<Map<String, String>> datosDeUsuario) {
@@ -111,14 +107,6 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
 
     public String getContrasena() {
         return contrasena;
-    }
-
-    public String getCriterioBusqueda() {
-        return criterioBusqueda;
-    }
-
-    public String getMotivo() {
-        return motivo;
     }
 
     public List<AgendarCitaBuilder> getUsuarios() {

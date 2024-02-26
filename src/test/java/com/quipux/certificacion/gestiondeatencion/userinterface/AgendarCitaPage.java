@@ -7,7 +7,7 @@ public class AgendarCitaPage {
     public static final Target BTN_AGENDAR_CITA = Target.the("Bot\u00F3n para agendar cita")
             .locatedBy("//button[contains(text(),'Agendar')]");
     public static final Target DDL_SUB_SEDE = Target.the("Lista de sub-sedes")
-            .located(By.id("select2-subsede-container"));
+            .located(By.cssSelector("div[class='col-md-3'] span[role='combobox']"));
     public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_SUB_SEDE = Target.the("Selecciona la sub sede requerida")

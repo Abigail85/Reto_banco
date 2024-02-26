@@ -17,7 +17,7 @@ public class ReagendarCitaPage {
             .located(By.cssSelector("#agendarCitaDatePicker"));
 
     public static final Target LST_REASIGNAR_HORA = Target.the("Selecciona el horario disponible")
-            .located(By.cssSelector("form[id='formReasignacion'] div span[class='select2 select2-container select2-container--default'] span[role='presentation']"));
+            .located(By.xpath("(//b[@role='presentation'])[6]"));
 
     public static final Target LST_MOTIVO = Target.the("Abre la lista de opciones de motivo")
             .locatedBy("#select2-motivoReasignar-container");

@@ -7,7 +7,7 @@ public class ConsultarCitaPage {
 
 
     public static final Target DDL_SUB_SEDE_CONSULTAR = Target.the("Lista de sub-sedes")
-            .located(By.xpath("(//span[@id='select2-subsede-container'])[1]"));
+            .located(By.xpath("//span[@class='selection']//span[@id='select2-subsede-container']"));
     public static final Target TXT_NRODOCUMENTO_CON = Target.the("Txt numero docuemento")
             .located(By.xpath("//input[@id='nroDocumento']"));
     public static final Target DDL_CRITERIO_BUSQUEDA = Target.the("Lista de busquedad")

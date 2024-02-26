@@ -17,8 +17,6 @@ public class AgendarCita {
     private final String fechaCita;
     private final String usuario;
     private final String contrasena;
-    private final String criterioBusqueda;
-    private final String motivo;
 
     public AgendarCita(AgendarCitaBuilder agendarCitaBuilder) {
         this.subSede = agendarCitaBuilder.getUsuarios().get(0).getSubSede();
@@ -35,8 +33,6 @@ public class AgendarCita {
         this.contrasena = agendarCitaBuilder.getUsuarios().get(0).getContrasena();
         this.entidadPrestadora = agendarCitaBuilder.getUsuarios().get(0).getEntidadPrestadora();
         this.servicio = agendarCitaBuilder.getUsuarios().get(0).getServicio();
-        this.criterioBusqueda = agendarCitaBuilder.getUsuarios().get(0).getCriterioBusqueda();
-        this.motivo =agendarCitaBuilder.getUsuarios().get(0).getMotivo();
     }
 
     public String getSubSede() {
@@ -95,11 +91,4 @@ public class AgendarCita {
         return fechaCita;
     }
 
-    public String getCriterioBusqueda() {
-        return criterioBusqueda;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
 }

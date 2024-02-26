@@ -23,17 +23,18 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
+                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede(),DDL_SUB_SEDE),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
-                            SeleccionarHorario.disponible(),
+                            SeleccionarHorario.disponible(LST_HORARIO_DISPONIBLE),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );
+                    actor.remember("confirmacionCita", LBL_CONFIRMACION_DE_CITA.resolveFor(actor).getText());
                 }
         );
     }
@@ -44,13 +45,13 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
+                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede(), DDL_SUB_SEDE),
                             DiligenciarFormulario.paraUnUsuarioConIdentificacionTipoNit(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
-                            SeleccionarHorario.disponible(),
+                            SeleccionarHorario.disponible(LST_HORARIO_DISPONIBLE),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))

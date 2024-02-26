@@ -1,52 +1,46 @@
 package com.quipux.certificacion.gestiondeatencion.tasks;
 
-import com.quipux.certificacion.gestiondeatencion.interactions.ElementoPresente;
-import com.quipux.certificacion.gestiondeatencion.interactions.ObtenerTextoElemento;
-import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
-import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
+import com.quipux.certificacion.gestiondeatencion.model.ReagendarCita;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
 
+import java.io.IOException;
+
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LST_HORA_SELECCIONADA;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.TXT_INGRESAR_HORA_DESEADA;
+import static com.quipux.certificacion.gestiondeatencion.utils.ExtraerFecha.extraerFecha;
 import static com.quipux.certificacion.gestiondeatencion.utils.FechaDinamica.*;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.ReagendarCitaPage.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class ReagendarCitaTask {
 
-    public static Performable reagendarCita(AgendarCita usuario) {
+    public static Performable paraReagendarUnServicio(ReagendarCita reagendarCita) {
 
         return Task.where("{0} completa el formulario para reagendar cita",
                 actor -> {
-                    actor.attemptsTo(
-                            ConsultarCita.consultarCita(usuario)
-                    );
-
-                    //VALIDACIÓN SI NO HAY CITAS
-                    boolean menNoInfor =  actor.asksFor(ElementoPresente.isVisible(LBL_VALIDACION_DE_CONSULTAR_CITA));
-
-                    if (menNoInfor == true){
-                        actor.attemptsTo(
-                                AgendaLaCita.paraUnServicioRequerido(usuario),
-                                ConsultarCita.consultarCita(usuario)
-                        );
-                    }
-
-                    String fecha = actor.asksFor(ObtenerTextoElemento.delElemento(TABLE_FECHA_INI));
-                    ///String fecha = Text.of(TABLE_FECHA_INI).answeredBy(actor).toString();
-                    fecha = fecha.substring(0, 10);
+                    String texto = actor.recall("confirmacionCita");
+                    System.out.println(texto);
+                    String fecha = extraerFecha(texto);
 
                     actor.attemptsTo(
-                            Click.on(BTN_REASIGNAR_CITA),
-                            WaitUntil.the(TXT_REASIGNAR_FECHA, isVisible()).forNoMoreThan(2).seconds(),
+                            ConsultarCita.consultarCita(reagendarCita),
+                            WaitUntil.the(BTN_REASIGNAR_CITA, isVisible()).forNoMoreThan(7).seconds(),
+                            DoubleClick.on(BTN_REASIGNAR_CITA),
+                            WaitUntil.the(TXT_REASIGNAR_FECHA, isVisible()).forNoMoreThan(9).seconds(),
                             Enter.theValue(nuevaFecha(fecha)).into(TXT_REASIGNAR_FECHA),
                             Hit.the(Keys.TAB).into(TXT_REASIGNAR_FECHA),
-                            SeleccionarHorario.disponible(),
+                            WaitUntil.the(LST_REASIGNAR_HORA, isVisible()).forNoMoreThan(7).seconds(),
+                            //SeleccionarHorario.disponible(LST_REASIGNAR_HORA)
+                            Click.on(LST_REASIGNAR_HORA),
+                            Enter.theValue("10").into(TXT_INGRESAR_HORA_DESEADA),
+                            Click.on(LST_HORA_SELECCIONADA.of("10:00")),
                             Click.on(LST_MOTIVO),
-                            Enter.theValue(usuario.getMotivo()).into(TXT_MOTIVO),
-                            Click.on(LST_MOTIVO_SELECT.of(usuario.getMotivo())),
+                            Enter.theValue(reagendarCita.getMotivo()).into(TXT_MOTIVO),
+                            Click.on(LST_MOTIVO_SELECT.of(reagendarCita.getMotivo())),
                             Click.on(BTN_SI)
                     );
                 }
