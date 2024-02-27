@@ -23,12 +23,18 @@ public class AsignarTurnoPage {
             .located(By.id("numeroDocumento"));
     public static final Target TXT_PRIMER_NOMBRE = Target.the("Campo para ingresar el primer nombre")
             .located(By.id("nombres"));
+    public static final Target TXT_SEGUNDO_NOMBRE = Target.the("Campo para ingresar el segundo nombre")
+            .located(By.id("segundoNombre"));
     public static final Target TXT_PRIMER_APELLIDO = Target.the("Campo para ingresar el primer apellido")
             .located(By.id("apellidos"));
+    public static final Target TXT_SEGUNDO_APELLIDO = Target.the("Campo para ingresar el segundo apellido")
+            .located(By.id("segundoApellido"));
     public static final Target TXT_CORREO_ELECTRONICO = Target.the("Campo para ingresar el correo electronico")
             .located(By.id("correo"));
     public static final Target TXT_NUMERO_TELEFONICO = Target.the("Campo para ingresar el n\u00FAmero telefonico")
             .located(By.id("telefono"));
+    public static final Target TXT_DIRECCION_DE_RESIDENCIA = Target.the("Campo para ingresar la direcci\u00F3n de residencia")
+            .located(By.id("direccion"));
     public static final Target BTN_CONTINUAR = Target.the("Selecciona el bot\u00F3n continuar")
             .locatedBy("//button[@class='btn btn-primary btn-block ng-binding']");
     public static final Target BTN_AGREGAR_SERVICIO = Target.the("Selecciona el bot\u00F3n agregar servicio")
@@ -44,7 +50,7 @@ public class AsignarTurnoPage {
     public static final Target TXT_NOMBRE_DEL_SERVICIO = Target.the("Campo para ingresar el tipo de servicio")
             .locatedBy("//input[@type='search']");
     public static final Target LTS_NOMBRE_DEL_SERVICIO = Target.the("Seleccionar el tipo de servicio")
-            .locatedBy("//li[contains(text(),'Entrega cédula de extranjería')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target BTN_AGREGAR = Target.the("Selecciona el bot\u00F3n agregar")
             .locatedBy("//button[@type='button'][contains(.,'Agregar')]");
     public static final Target BTN_REGISTRAR_ATENCION = Target.the("Selecciona el bot\u00F3n registrar atenci\u00F3n")

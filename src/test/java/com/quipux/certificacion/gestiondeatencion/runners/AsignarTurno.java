@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = "src/test/resources/features/asignar_turno.feature",
         glue = {"com.quipux.certificacion.gestiondeatencion"},
-        tags = "@AsignarTurno",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class AsignarTurno {
