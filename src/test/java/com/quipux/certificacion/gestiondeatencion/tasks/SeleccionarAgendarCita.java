@@ -7,10 +7,10 @@ import net.serenitybdd.screenplay.actions.Click;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.MenuPage.LST_AGENDAR_CITAS;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.MenuPage.LST_GESTION_DE_LA_ATENCION;
 
-public class SeleccionarOpcionDeMenu {
+public class SeleccionarAgendarCita {
 
-    public static Performable paraTramites() {
-        return Task.where("{0} selecciona la opción del menu",
+    public static Performable paraElServicio() {
+        return Task.where("{0} selecciona la opción del menú",
                 actor -> {
                     actor.attemptsTo(
                             Click.on(LST_GESTION_DE_LA_ATENCION),

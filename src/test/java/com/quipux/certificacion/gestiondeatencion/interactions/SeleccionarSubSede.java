@@ -10,19 +10,23 @@ import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCi
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SeleccionarSubSede implements Performable {
+    private String subSede;
+
+    public SeleccionarSubSede(String subSede) {
+        this.subSede = subSede;
+    }
 
     @Override
     @Step("{0} selecciona la sub-sede para agendar la cita")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(BTN_AGENDAR_CITA),
                 Click.on(DDL_SUB_SEDE),
-                Enter.theValue("sh subsede 1").into(TXT_INGRESAR_SUB_SEDE),
+                Enter.theValue().into(TXT_INGRESAR_SUB_SEDE),
                 Click.on(LST_SUB_SEDE)
         );
     }
 
-    public static SeleccionarSubSede paraAgendarLaCita() {
-        return instrumented(SeleccionarSubSede.class);
+    public static SeleccionarSubSede paraAgendarLaCita(String subSede) {
+        return instrumented(SeleccionarSubSede.class, subSede);
     }
 }
