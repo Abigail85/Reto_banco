@@ -39,11 +39,6 @@ Característica: Agendar citas por medio de la pagina web
     Entonces debe ver que la cita fue agendada de forma exitosa
 
   @prueba
-  Escenario: Agendar cita exitosa para un usuario con CNPJ
-    Dado que el usuario se encuentra en la pagina web de Shopping GA
-    Cuando agenda una cita para un usuario que posee cnpj para el servicio 'Lavado de carro'
-    Entonces debe ver que la cita fue agendada de forma exitosa
-
   Escenario: Agendar cita multitramite
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita para tramitar diferentes servicios

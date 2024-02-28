@@ -7,7 +7,7 @@ public class AgendarCitaPage {
     public static final Target BTN_AGENDAR_CITA = Target.the("Bot\u00F3n para agendar cita")
             .locatedBy("//button[contains(text(),'Agendar')]");
     public static final Target DDL_SUB_SEDE = Target.the("Lista de sub-sedes")
-            .located(By.id("select2-subsede-container"));
+            .locatedBy("//span[@id='select2-subsede-container']");
     public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_SUB_SEDE = Target.the("Selecciona la sub sede requerida")
@@ -60,4 +60,6 @@ public class AgendarCitaPage {
             .locatedBy("(//label[contains(text(),'Tipo de documento')])[1]");
     public static final Target TXT_SIGLA = Target.the("Ingresa la sigla del solicitante")
             .located(By.id("juridica"));
+    public static final Target LBL_AGENDAR_CITA = Target.the("Label que contiene el texto de agentdar cita")
+            .locatedBy("//div[@roles='ROLE_ADMON_CITAS_AGENDADA_M']/descendant::h3");
 }
