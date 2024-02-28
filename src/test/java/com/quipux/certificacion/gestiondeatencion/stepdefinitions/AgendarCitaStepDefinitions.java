@@ -14,6 +14,7 @@ import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarC
 import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.deUsuario;
 import static com.quipux.certificacion.gestiondeatencion.model.builders.ReagendarCitaBuilder.conLosDatosDeReagendarCita;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.ReagendarCitaPage.LBL_VALIDACION_DE_CONSULTAR_CITA;
 import static com.quipux.certificacion.gestiondeatencion.utils.UtileriaCsv.obtenerDatosDeCsv;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -54,7 +55,7 @@ public class AgendarCitaStepDefinitions {
     public void reagendaLaCitaParaElServicio(String tipoDeServicio) throws IOException {
         theActorInTheSpotlight()
                 .attemptsTo(
-                       /// AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", tipoDeServicio)).build()),
+                        AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", tipoDeServicio)).build()),
                         ReagendarCitaTask.paraReagendarUnServicio(conLosDatosDeReagendarCita(obtenerDatosDeCsv("reagendar_cita", tipoDeServicio)).build())
                 );
 
@@ -67,7 +68,7 @@ public class AgendarCitaStepDefinitions {
 
     @Entonces("debe ver que la cita fue reagendada de forma exitosamente")
     public void debeVerQueLaCitaFueReagendadaDeFormaExitosamente() {
-        theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
+        theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_VALIDACION_DE_CONSULTAR_CITA).text().isNotEmpty());
     }
 
 }

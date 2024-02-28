@@ -7,14 +7,13 @@ public class ReagendarCita {
     private final String motivo;
     private final String tipoDocumento;
     private final String subSede;
-    private final String nroDocumento;
+
 
     public ReagendarCita(ReagendarCitaBuilder reagendarCitaBuilder) {
         this.tipoDocumento = reagendarCitaBuilder.getReagendarCitaBuilders().get(0).getTipoDocumento();
         this.subSede = reagendarCitaBuilder.getReagendarCitaBuilders().get(0).getSubSede();
         this.criterioBusqueda = reagendarCitaBuilder.getReagendarCitaBuilders().get(0).getCriterioBusqueda();
         this.motivo = reagendarCitaBuilder.getReagendarCitaBuilders().get(0).getMotivo();
-        this.nroDocumento = reagendarCitaBuilder.getReagendarCitaBuilders().get(0).getNroDocumento();
     }
 
     public String getCriterioBusqueda() {
@@ -33,7 +32,4 @@ public class ReagendarCita {
         return subSede;
     }
 
-    public String getNroDocumento() {
-        return nroDocumento;
-    }
 }
