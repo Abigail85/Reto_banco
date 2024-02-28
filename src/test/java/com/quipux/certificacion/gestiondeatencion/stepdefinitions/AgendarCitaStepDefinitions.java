@@ -69,12 +69,12 @@ public class AgendarCitaStepDefinitions {
                                         .build()));
     }
 
-    @Cuando("agenda una cita para tramitar diferentes (.*)")
-    public void agendaUnaCitaParaRealizarVariosTramites(String servicio, List<Map<String, String>> servicios) throws IOException {
+    @Cuando("agenda una cita para tramitar diferentes servicios")
+    public void agendaUnaCitaParaRealizarVariosTramites(List<Map<String, String>> servicios) throws IOException {
         theActorInTheSpotlight()
                 .attemptsTo(
                         AgregarMultiplesServicios
-                                .requeridos(servicios, conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_multi_tramite", servicio))
+                                .requeridos(servicios, conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_multi_tramite", servicios.get(0).get("ServicioRequerido")))
                                         .build()));
     }
 
