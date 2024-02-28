@@ -12,6 +12,7 @@ public class ReagendarCitaBuilder  implements Builder<ReagendarCita> {
     private String subSede;
     private String criterioBusqueda;
     private String motivo;
+    private String nroDocumento;
     private List<ReagendarCitaBuilder> reagendarCitaBuilders = new ArrayList<>();
 
     public ReagendarCitaBuilder(Map<String, String> datosReagendarCita) {
@@ -19,6 +20,7 @@ public class ReagendarCitaBuilder  implements Builder<ReagendarCita> {
         this.tipoDocumento = datosReagendarCita.get("tipoDocumento");
         this.criterioBusqueda = datosReagendarCita.get("criterioBusqueda");
         this.motivo = datosReagendarCita.get("motivo");
+        this.nroDocumento = datosReagendarCita.get("nroDocumento");
     }
 
     public ReagendarCitaBuilder(List<Map<String, String>> datosReagendarCita) {
@@ -45,6 +47,10 @@ public class ReagendarCitaBuilder  implements Builder<ReagendarCita> {
         return motivo;
     }
 
+    public String getNroDocumento() {
+        return nroDocumento;
+    }
+
     public List<ReagendarCitaBuilder> getReagendarCitaBuilders() {
         return reagendarCitaBuilders;
     }
@@ -58,7 +64,5 @@ public class ReagendarCitaBuilder  implements Builder<ReagendarCita> {
     public ReagendarCita build() {
         return new ReagendarCita(this);
     }
-
-
 
 }

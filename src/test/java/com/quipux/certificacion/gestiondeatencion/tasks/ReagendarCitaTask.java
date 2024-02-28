@@ -1,5 +1,7 @@
 package com.quipux.certificacion.gestiondeatencion.tasks;
 
+import com.quipux.certificacion.gestiondeatencion.interactions.ObtenerTextoElemento;
+import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.model.ReagendarCita;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -22,22 +24,21 @@ public class ReagendarCitaTask {
 
         return Task.where("{0} completa el formulario para reagendar cita",
                 actor -> {
-                    String texto = actor.recall("confirmacionCita");
-                    System.out.println(texto);
-                    String fecha = extraerFecha(texto);
+//                    String texto = actor.recall("confirmacionCita");
+//                    System.out.println(texto);
+//                    String fecha = extraerFecha(texto);
+
+                    //String fecha = actor.asksFor(ObtenerTextoElemento.delElemento(TABLE_FECHA_INI));
+                    //System.out.println("Fecha extraída: " + fecha.substring(0, 10));
 
                     actor.attemptsTo(
                             ConsultarCita.consultarCita(reagendarCita),
-                            WaitUntil.the(BTN_REASIGNAR_CITA, isVisible()).forNoMoreThan(7).seconds(),
+                            WaitUntil.the(BTN_REASIGNAR_CITA, isVisible()).forNoMoreThan(4).seconds(),
                             DoubleClick.on(BTN_REASIGNAR_CITA),
-                            WaitUntil.the(TXT_REASIGNAR_FECHA, isVisible()).forNoMoreThan(9).seconds(),
-                            Enter.theValue(nuevaFecha(fecha)).into(TXT_REASIGNAR_FECHA),
+                            WaitUntil.the(TXT_REASIGNAR_FECHA, isVisible()).forNoMoreThan(4).seconds(),
+                            Enter.theValue(nuevaFecha("04/03/2024")).into(TXT_REASIGNAR_FECHA),
                             Hit.the(Keys.TAB).into(TXT_REASIGNAR_FECHA),
-                            WaitUntil.the(LST_REASIGNAR_HORA, isVisible()).forNoMoreThan(7).seconds(),
-                            //SeleccionarHorario.disponible(LST_REASIGNAR_HORA)
-                            Click.on(LST_REASIGNAR_HORA),
-                            Enter.theValue("10").into(TXT_INGRESAR_HORA_DESEADA),
-                            Click.on(LST_HORA_SELECCIONADA.of("10:00")),
+                            SeleccionarHorario.disponible(LST_REASIGNAR_HORA),
                             Click.on(LST_MOTIVO),
                             Enter.theValue(reagendarCita.getMotivo()).into(TXT_MOTIVO),
                             Click.on(LST_MOTIVO_SELECT.of(reagendarCita.getMotivo())),

@@ -17,7 +17,7 @@ public class ReagendarCitaPage {
             .located(By.cssSelector("#agendarCitaDatePicker"));
 
     public static final Target LST_REASIGNAR_HORA = Target.the("Selecciona el horario disponible")
-            .located(By.xpath("(//b[@role='presentation'])[6]"));
+            .located(By.xpath("//span[@class='select2-selection__rendered' and @id='select2-horaCita-container']"));
 
     public static final Target LST_MOTIVO = Target.the("Abre la lista de opciones de motivo")
             .locatedBy("#select2-motivoReasignar-container");
@@ -29,7 +29,7 @@ public class ReagendarCitaPage {
             .locatedBy("//li[contains(text(),'{0}')]");
 
     public static final Target BTN_SI = Target.the("Bot\u00F3n para continuar")
-            .locatedBy("(//button[@ng-click='consultarAgendaController.reasignarCita()'])[1]");
+            .locatedBy("//button[contains(@class, 'btn-primary') and contains(@ng-click, 'reasignarCita')]");
 
     public static final Target LBL_VALIDACION_DE_CONSULTAR_CITA = Target.the("El mensaje de validac\u00F3n si no hay citas agendadas")
             .locatedBy("//div[contains(text(),'No se')]");

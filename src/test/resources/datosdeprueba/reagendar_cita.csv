@@ -1,2 +1,2 @@
-filtro;tipoDocumento;criterioBusqueda;subSede;motivo
-Lavado de carro;CEDULA CIUDADANIA;Documento;sh subsede 1;Adelantar cita
+filtro;tipoDocumento;nroDocumento;criterioBusqueda;subSede;motivo
+Lavado de carro;CEDULA CIUDADANIA;3231918128;Documento;sh subsede 1;Adelantar cita
