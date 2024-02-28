@@ -20,7 +20,7 @@ public class SeleccionarHorario {
                     actor.attemptsTo(
                             Click.on(LST_HORARIO_DISPONIBLE),
                             Enter.theValue("19").into(TXT_INGRESAR_HORA_DESEADA),
-                            Click.on(LST_HORA_SELECCIONADA.of("19:00")));
+                            Click.on(LST_HORA_SELECCIONADA));
                 });
     }
 }
