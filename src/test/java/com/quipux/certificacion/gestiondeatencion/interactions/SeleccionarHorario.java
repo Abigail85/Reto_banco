@@ -19,8 +19,8 @@ public class SeleccionarHorario {
                     new InternalSystemClock().pauseFor(3000);
                     actor.attemptsTo(
                             Click.on(LST_HORARIO_DISPONIBLE),
-                            Enter.theValue("17").into(TXT_INGRESAR_HORA_DESEADA),
-                            Click.on(LST_HORA_SELECCIONADA.of("17:20")));
+                            Enter.theValue("18").into(TXT_INGRESAR_HORA_DESEADA),
+                            Click.on(LST_HORA_SELECCIONADA.of("18:00")));
                 });
     }
 }

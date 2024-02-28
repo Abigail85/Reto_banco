@@ -23,6 +23,7 @@ Característica: Agendar citas por medio de la pagina web
     Cuando agenda una cita teniendo un ticket en el sistema con el mismo servicio
     Y estando en el tiempo de tolerancia
 
+    @prueba
   Escenario: Agendar cita exitosa para un usuario con Cédula de ciudadania
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita para el servicio 'Lavado de carro'
