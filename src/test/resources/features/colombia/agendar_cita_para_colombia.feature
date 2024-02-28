@@ -38,7 +38,6 @@ Característica: Agendar citas por medio de la pagina web
     Cuando agenda una cita para un usuario que posee rut para el servicio 'Lavado de carro'
     Entonces debe ver que la cita fue agendada de forma exitosa
 
-  @prueba
   Escenario: Agendar cita multitramite
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita para tramitar diferentes servicios
@@ -63,5 +62,5 @@ Característica: Agendar citas por medio de la pagina web
   @agendarCitaConComentario
   Escenario: Agendar cita incluyendo un comentario
     Dado que el usuario se encuentra en la pagina web de Shopping GA
-    Cuando agenda una cita incluyendo un comentario para el servicio Cambio Color Vehiculo
+    Cuando agenda una cita incluyendo un comentario para el servicio Lavado de carro
     Entonces debe ver que la cita fue agendada de forma exitosa
