@@ -19,7 +19,7 @@ public class AgregarServicio {
         return Task.where("{0} agrega el servicio  para la cita",
                 actor -> {
                     actor.attemptsTo(
-                            Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilEnabled(),
+                            Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilPresent(),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000)),
                             Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue(entidadPrestadoraDeServicio).into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),
@@ -40,7 +40,7 @@ public class AgregarServicio {
         return Task.where("{0} agrega el servicio  para la cita",
                 actor -> {
                     actor.attemptsTo(
-                            Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilEnabled(),
+                            Click.on(BTN_AGREGAR_SERVICIO).afterWaitingUntilPresent(),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000)),
                             Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
                             Enter.theValue(entidadPrestadoraDeServicio).into(TXT_ENTIDAD_PRESTADORA_DE_SERVICIO),
