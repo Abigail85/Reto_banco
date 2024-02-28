@@ -15,6 +15,7 @@ public class AgendarCita {
     private final String numeroDeTelefono;
     private final String direccionResidencia;
     private final String fechaCita;
+    private final String comentario;
     private final String usuario;
     private final String contrasena;
 
@@ -29,6 +30,7 @@ public class AgendarCita {
         this.numeroDeTelefono = agendarCitaBuilder.getUsuarios().get(0).getNumeroDeTelefono();
         this.direccionResidencia = agendarCitaBuilder.getUsuarios().get(0).getDireccionResidencia();
         this.fechaCita = agendarCitaBuilder.getUsuarios().get(0).getFechaCita();
+        this.comentario = agendarCitaBuilder.getUsuarios().get(0).getComentario();
         this.usuario = agendarCitaBuilder.getUsuarios().get(0).getUsuario();
         this.contrasena = agendarCitaBuilder.getUsuarios().get(0).getContrasena();
         this.entidadPrestadora = agendarCitaBuilder.getUsuarios().get(0).getEntidadPrestadora();
@@ -89,5 +91,9 @@ public class AgendarCita {
 
     public String getFechaCita() {
         return fechaCita;
+    }
+
+    public String getComentario() {
+        return comentario;
     }
 }

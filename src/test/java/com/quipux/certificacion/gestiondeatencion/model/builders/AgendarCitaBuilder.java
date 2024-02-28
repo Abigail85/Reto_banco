@@ -20,6 +20,7 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
     private String entidadPrestadora;
     private String servicio;
     private String fechaCita;
+    private String comentario;
     private String usuario;
     private String contrasena;
     private List<AgendarCitaBuilder> usuarios = new ArrayList<>();
@@ -37,6 +38,7 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
         this.entidadPrestadora = datosDeUsuario.get("entidadPrestadora");
         this.servicio = datosDeUsuario.get("filtro");
         this.fechaCita = datosDeUsuario.get("fechaCita");
+        this.comentario = datosDeUsuario.get("comentario");
         this.usuario = datosDeUsuario.get("usuario");
         this.contrasena = datosDeUsuario.get("contrasena");
     }
@@ -103,6 +105,10 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
 
     public String getFechaCita() {
         return fechaCita;
+    }
+
+    public String getComentario() {
+        return comentario;
     }
 
     public String getContrasena() {

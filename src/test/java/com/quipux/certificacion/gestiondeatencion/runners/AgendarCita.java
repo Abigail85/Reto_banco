@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/colombia/agendar_cita_para_colombia.feature",
         glue = {"com.quipux.certificacion.gestiondeatencion"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@camposObligatorios"
+        tags = "@prueba"
 )
 public class AgendarCita {
 }
