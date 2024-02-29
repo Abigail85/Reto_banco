@@ -7,11 +7,11 @@ public class AgendarCitaPage {
     public static final Target BTN_AGENDAR_CITA = Target.the("Bot\u00F3n para agendar cita")
             .locatedBy("//button[contains(text(),'Agendar')]");
     public static final Target DDL_SUB_SEDE = Target.the("Lista de sub-sedes")
-            .located(By.id("select2-subsede-container"));
+            .locatedBy("//span[@id='select2-subsede-container']");
     public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_SUB_SEDE = Target.the("Selecciona la sub sede requerida")
-            .locatedBy("//li[contains(text(),'sh subsede 1')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target DDL_TIPO_DE_DOCUMENTO = Target.the("Lista de tipos de documentos")
             .located(By.id("select2-tipoDocumento-container"));
     public static final Target TXT_TIPO_DE_DOCUMENTO = Target.the("Campo para ingresar el tipo de documento del solicitante")
@@ -45,11 +45,9 @@ public class AgendarCitaPage {
     public static final Target TXT_FECHA_REQUERIDA = Target.the("Ingresa la fecha requerida para la cita")
             .located(By.id("agendarCitaDatePicker"));
     public static final Target LST_HORARIO_DISPONIBLE = Target.the("Selecciona el horario disponible")
-            .locatedBy("(//span[@class='select2-selection select2-selection--single'])[3]");
-    public static final Target TXT_INGRESAR_HORA_DESEADA = Target.the("Ingresa la hora deseada para la cita")
-            .locatedBy("//input[@class='select2-search__field']");
+            .locatedBy("//span[@id='select2-idHorasCitasDisponibles-container' or @id='select2-horaCita-container']/following-sibling::span");
     public static final Target LST_HORA_SELECCIONADA = Target.the("Selecciona la hora para la cita")
-            .locatedBy("//li[contains(text(),'{0}')]");
+            .locatedBy("//ul[@id='select2-idHorasCitasDisponibles-results' or @id='select2-horaCita-results']/child::li[3]");
     public static final Target BTN_GUARDAR = Target.the("Selecciona el bot\u00F3n guardar")
             .locatedBy("//button[contains(text(),'Guardar')]");
     public static final Target LBL_CONFIRMACION_DE_CITA = Target.the("El mensaje de confirmaci\u00F3n de la cita")
@@ -60,4 +58,6 @@ public class AgendarCitaPage {
             .locatedBy("(//label[contains(text(),'Tipo de documento')])[1]");
     public static final Target TXT_SIGLA = Target.the("Ingresa la sigla del solicitante")
             .located(By.id("juridica"));
+    public static final Target LBL_AGENDAR_CITA = Target.the("Label que contiene el texto de agendar cita")
+            .locatedBy("//div[@roles='ROLE_ADMON_CITAS_AGENDADA_M']/descendant::h3");
 }

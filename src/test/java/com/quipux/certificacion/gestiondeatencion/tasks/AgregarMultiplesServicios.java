@@ -28,7 +28,7 @@ public class AgregarMultiplesServicios {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR)
                     );
@@ -39,7 +39,7 @@ public class AgregarMultiplesServicios {
                     }
                     actor.attemptsTo(
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
-                            Enter.theValue("14/02/2024").into(TXT_FECHA_REQUERIDA),
+                            Enter.theValue("28/02/2024").into(TXT_FECHA_REQUERIDA),
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
