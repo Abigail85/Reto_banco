@@ -29,7 +29,7 @@ public class DiligenciarFormulario {
                             Enter.theValue(usuario.getNumeroDeTelefono()).into(TXT_NUMERO_TELEFONICO),
                             Enter.theValue(usuario.getDireccionResidencia()).into(TXT_DIRECCION_DE_RESIDENCIA)
                     );
-                    actor.remember("documento", documento);
+                    actor.remember("numeroDocumento", documento);
                 }
         );
     }

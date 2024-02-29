@@ -3,6 +3,7 @@ package com.quipux.certificacion.gestiondeatencion.stepdefinitions;
 import com.quipux.certificacion.gestiondeatencion.tasks.AgendaLaCita;
 import com.quipux.certificacion.gestiondeatencion.tasks.AgregarMultiplesServicios;
 import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
+import com.quipux.certificacion.gestiondeatencion.tasks.ReagendarCitaServicio;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -14,7 +15,9 @@ import java.util.Map;
 
 import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.conLosDatosDelUsuario;
 import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.deUsuario;
+import static com.quipux.certificacion.gestiondeatencion.model.builders.ReagendarCitaBuilder.conLosDatosDeReagendarCita;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.ReagendarCitaPage.LBL_REAGENDAR_CITA;
 import static com.quipux.certificacion.gestiondeatencion.utils.UtileriaCsv.obtenerDatosDeCsv;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -105,8 +108,22 @@ public class AgendarCitaStepDefinitions {
         );
     }
 
+    @Cuando("reagenda la cita para el servicio {string}")
+    public void reagendaLaCitaParaElServicio(String tipoDeServicio) throws IOException {
+        theActorInTheSpotlight()
+                .attemptsTo(
+                        AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", tipoDeServicio)).build()),
+                        ReagendarCitaServicio.paraReagendarUnServicio(conLosDatosDeReagendarCita(obtenerDatosDeCsv("reagendar_cita", tipoDeServicio)).build())
+                );
+    }
+
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
+    }
+
+    @Entonces("debe ver que la cita fue reagendada de forma exitosa")
+    public void debeVerQueLaCitaFueReagendadaDeFormaExitosamente() {
+        theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_REAGENDAR_CITA).text().isNotEmpty());
     }
 }

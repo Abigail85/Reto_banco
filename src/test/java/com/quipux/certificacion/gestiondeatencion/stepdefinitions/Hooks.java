@@ -15,7 +15,7 @@ public class Hooks {
     @Before
     public void inicializar() {
         OnStage.setTheStage(new OnlineCast());
-        theActorCalled("Julian");
+        theActorCalled("Adri\u00E1n");
         theActorInTheSpotlight().wasAbleTo(IniciarElNavegador.yNavegarALaPaginaEspecificada());
     }
 

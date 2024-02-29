@@ -24,7 +24,7 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
@@ -35,6 +35,7 @@ public class AgendaLaCita {
                             Click.on(BTN_GUARDAR),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
                     );
+                    actor.remember("confirmacionCita", LBL_CONFIRMACION_DE_CITA.resolveFor(actor).getText());
                 }
         );
     }
@@ -45,7 +46,7 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede()),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.paraUnUsuarioConIdentificacionTipoNit(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
@@ -66,7 +67,7 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(agendarCita.getSubSede()),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(agendarCita.getSubSede()),
                             DiligenciarFormulario.delSolicitante(agendarCita),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(agendarCita.getEntidadPrestadora(), agendarCita.getServicio()),
@@ -88,7 +89,7 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(agendarCita.getSubSede()),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(agendarCita.getSubSede()),
                             DiligenciarFormulario.delSolicitante(agendarCita),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.queNoRequierePlacaDelVehiculo(agendarCita.getEntidadPrestadora(), agendarCita.getServicio()),

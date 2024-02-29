@@ -21,3 +21,10 @@ Característica: Agende consultas pelo site
       | Alcaldía de Medellín          | Cambio de matricula                   |
       | Secretaría Movilidad Medellín | Duplicado licencia de conducción moto |
     Entao debe ver que la cita fue agendada de forma exitosa
+
+
+  Cenario: Reagendar cita
+    Dado que el usuario se encuentra en la pagina web de Shopping GA
+    Quando reagenda la cita para el servicio Lavado de carro
+    Entao debe ver que la cita fue reagendada de forma exitosamente
+
