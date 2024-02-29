@@ -8,7 +8,6 @@ import java.util.Random;
 public class FechaDinamica {
 
     public static String nuevaFecha(String fecha) {
-
         String[] fec = fecha.split("/");
         int dia = Integer.parseInt(fec[0]);
         int mes = Integer.parseInt(fec[1]);

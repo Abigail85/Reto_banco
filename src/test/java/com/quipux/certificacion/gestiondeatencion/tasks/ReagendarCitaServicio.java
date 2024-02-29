@@ -17,16 +17,13 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 public class ReagendarCitaServicio {
 
     public static Performable paraReagendarUnServicio(ReagendarCita reagendarCita) {
-
         return Task.where("{0} completa el formulario para reagendar cita",
                 actor -> {
-
                     String texto = actor.recall("confirmacionCita");
                     String fecha = extraerFecha(texto);
 
                     actor.attemptsTo(
                             ConsultarCitaServicio.paraConsultarCitaServicio(reagendarCita),
-                            WaitUntil.the(BTN_REASIGNAR_CITA, isVisible()).forNoMoreThan(4).seconds(),
                             Click.on(BTN_REASIGNAR_CITA));
                     new InternalSystemClock().pauseFor(3000);
                     actor.attemptsTo(
@@ -38,7 +35,7 @@ public class ReagendarCitaServicio {
                             Click.on(LST_MOTIVO_SELECT.of(reagendarCita.getMotivo())),
                             Click.on(BTN_SI)
                     );
-                    new InternalSystemClock().pauseFor(2000);
+                    new InternalSystemClock().pauseFor(3000);
                 }
         );
     }

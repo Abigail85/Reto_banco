@@ -108,14 +108,13 @@ public class AgendarCitaStepDefinitions {
         );
     }
 
-    @Cuando("^reagenda la cita para el servicio (.*)$")
+    @Cuando("reagenda la cita para el servicio {string}")
     public void reagendaLaCitaParaElServicio(String tipoDeServicio) throws IOException {
         theActorInTheSpotlight()
                 .attemptsTo(
                         AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", tipoDeServicio)).build()),
                         ReagendarCitaServicio.paraReagendarUnServicio(conLosDatosDeReagendarCita(obtenerDatosDeCsv("reagendar_cita", tipoDeServicio)).build())
                 );
-
     }
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
@@ -123,9 +122,8 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
     }
 
-    @Entonces("debe ver que la cita fue reagendada de forma exitosamente")
+    @Entonces("debe ver que la cita fue reagendada de forma exitosa")
     public void debeVerQueLaCitaFueReagendadaDeFormaExitosamente() {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_REAGENDAR_CITA).text().isNotEmpty());
     }
-
 }

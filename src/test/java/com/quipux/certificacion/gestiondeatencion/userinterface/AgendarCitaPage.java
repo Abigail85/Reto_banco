@@ -11,8 +11,6 @@ public class AgendarCitaPage {
     public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_SUB_SEDE = Target.the("Selecciona la sub sede requerida")
-            .locatedBy("//li[contains(text(),'sh subsede 1')]");
-    public static final Target LST_SUB_SEDE_DINAMICA = Target.the("Selecciona la sub sede requerida")
             .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target DDL_TIPO_DE_DOCUMENTO = Target.the("Lista de tipos de documentos")
             .located(By.id("select2-tipoDocumento-container"));

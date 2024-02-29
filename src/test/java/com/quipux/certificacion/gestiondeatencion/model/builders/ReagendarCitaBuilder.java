@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ReagendarCitaBuilder  implements Builder<ReagendarCita> {
+public class ReagendarCitaBuilder implements Builder<ReagendarCita> {
     private String tipoDocumento;
     private String subSede;
     private String criterioBusqueda;
@@ -58,5 +58,4 @@ public class ReagendarCitaBuilder  implements Builder<ReagendarCita> {
     public ReagendarCita build() {
         return new ReagendarCita(this);
     }
-
 }
