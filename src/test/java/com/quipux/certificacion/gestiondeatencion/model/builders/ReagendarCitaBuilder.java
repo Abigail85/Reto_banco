@@ -50,8 +50,9 @@ public class ReagendarCitaBuilder implements Builder<ReagendarCita> {
     }
 
     private void crearConstructorReagendarCita(List<Map<String, String>> datosReagendarCita) {
-        for (Map<String, String> datoReagendarCita : datosReagendarCita)
+        for (Map<String, String> datoReagendarCita : datosReagendarCita) {
             reagendarCitaBuilders.add(new ReagendarCitaBuilder(datoReagendarCita));
+        }
     }
 
     @Override
