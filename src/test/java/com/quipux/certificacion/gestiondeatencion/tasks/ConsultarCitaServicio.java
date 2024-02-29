@@ -23,7 +23,6 @@ public class ConsultarCitaServicio {
 
     public static Performable paraConsultarCitaServicio(ReagendarCita reagendarCita) {
         return Task.where("{0} completa el formulario para consultar cita",
-
                 actor -> {
                     getDriver().navigate().refresh();
                     String numeroDocumento = actor.recall("numeroDocumento");
@@ -36,7 +35,7 @@ public class ConsultarCitaServicio {
                             Click.on(DDL_CRITERIO_BUSQUEDA),
                             Enter.theValue(reagendarCita.getCriterioBusqueda()).into(TXT_CRITERIO_BUSQUEDA),
                             Click.on(LST_CRITERIO_BUSQUEDA.of(reagendarCita.getCriterioBusqueda())),
-                            SeleccionarSubSede.paraAgendarLaCita(reagendarCita.getSubSede(), DDL_SUB_SEDE_CONSULTAR),
+                            SeleccionarSubSede.paraSeleccionarSubSedeReagendarCita(reagendarCita.getSubSede()),
                             Click.on(BTN_BUSCAR),
                             WaitUntil.the(TABLE_FECHA_INI, isVisible()).forNoMoreThan(5).seconds()
                     );

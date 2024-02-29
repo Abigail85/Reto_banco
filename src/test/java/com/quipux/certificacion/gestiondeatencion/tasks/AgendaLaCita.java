@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import org.openqa.selenium.By;
 
 import java.time.Duration;
 
@@ -23,13 +24,13 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede(),DDL_SUB_SEDE),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
-                            SeleccionarHorario.disponible(LST_HORARIO_DISPONIBLE),
+                            SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
@@ -45,13 +46,56 @@ public class AgendaLaCita {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
                             Click.on(BTN_AGENDAR_CITA),
-                            SeleccionarSubSede.paraAgendarLaCita(usuario.getSubSede(), DDL_SUB_SEDE),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.paraUnUsuarioConIdentificacionTipoNit(usuario),
                             Click.on(BTN_CONTINUAR),
                             AgregarServicio.requerido(usuario.getEntidadPrestadora(), usuario.getServicio()),
                             Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
                             Enter.theValue(usuario.getFechaCita()).into(TXT_FECHA_REQUERIDA),
-                            SeleccionarHorario.disponible(LST_HORARIO_DISPONIBLE),
+                            SeleccionarHorario.disponible(),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                    );
+                }
+        );
+    }
+
+    public static Performable incluyendoUnComentarioParaElServicio(AgendarCita agendarCita) {
+        return Task.where("{0} completa el formulario para agendar cita",
+                actor -> {
+                    actor.attemptsTo(
+                            SeleccionarAgendarCita.paraElServicio(),
+                            Click.on(BTN_AGENDAR_CITA),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(agendarCita.getSubSede()),
+                            DiligenciarFormulario.delSolicitante(agendarCita),
+                            Click.on(BTN_CONTINUAR),
+                            AgregarServicio.requerido(agendarCita.getEntidadPrestadora(), agendarCita.getServicio()),
+                            Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
+                            Enter.theValue(agendarCita.getFechaCita()).into(TXT_FECHA_REQUERIDA),
+                            SeleccionarHorario.disponible(),
+                            Enter.theValue(agendarCita.getComentario()).into(By.id("comentarios")),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                    );
+                }
+        );
+    }
+
+    public static Performable paraUnServicioSinPlacaDeVehiculo(AgendarCita agendarCita) {
+        return Task.where("{0} completa el formulario para agendar cita",
+                actor -> {
+                    actor.attemptsTo(
+                            SeleccionarAgendarCita.paraElServicio(),
+                            Click.on(BTN_AGENDAR_CITA),
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(agendarCita.getSubSede()),
+                            DiligenciarFormulario.delSolicitante(agendarCita),
+                            Click.on(BTN_CONTINUAR),
+                            AgregarServicio.queNoRequierePlacaDelVehiculo(agendarCita.getEntidadPrestadora(), agendarCita.getServicio()),
+                            Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
+                            Enter.theValue(agendarCita.getFechaCita()).into(TXT_FECHA_REQUERIDA),
+                            SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
