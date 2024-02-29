@@ -3,6 +3,7 @@ package com.quipux.certificacion.gestiondeatencion.utils;
 import java.security.SecureRandom;
 
 public class GeneradorDePlacasDeVehiculo {
+    private static final int CONTADOR = 3;
 
     public static String obtenerPlacaDelVehiculo() {
         return generarLetrasAleatorias() + generarNumerosAleatorios();
@@ -13,7 +14,7 @@ public class GeneradorDePlacasDeVehiculo {
         String nuevaCadena = "";
         SecureRandom random = new SecureRandom();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < CONTADOR; i++) {
             nuevaCadena = nuevaCadena + caracteres[random.nextInt(caracteres.length)];
         }
 
@@ -25,7 +26,7 @@ public class GeneradorDePlacasDeVehiculo {
         String nuevoNumero = "";
         SecureRandom random = new SecureRandom();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < CONTADOR; i++) {
             nuevoNumero = nuevoNumero + numeros[random.nextInt(numeros.length)];
         }
 
@@ -37,7 +38,7 @@ public class GeneradorDePlacasDeVehiculo {
         String numeroDocumento = "";
         SecureRandom random = new SecureRandom();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < digitos.length; i++) {
             numeroDocumento = numeroDocumento + digitos[random.nextInt(digitos.length)];
         }
 
