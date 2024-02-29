@@ -23,7 +23,6 @@ Característica: Agendar citas por medio de la pagina web
     Cuando agenda una cita teniendo un ticket en el sistema con el mismo servicio
     Y estando en el tiempo de tolerancia
 
-    @prueba
   Escenario: Agendar cita exitosa para un usuario con Cédula de ciudadania
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita para el servicio 'Lavado de carro'
@@ -48,19 +47,16 @@ Característica: Agendar citas por medio de la pagina web
       | Alcaldía de Medellín        | Lavado de carro   |
     Entonces debe ver que la cita fue agendada de forma exitosa
 
-  @agendarCitaSinPlacaVehiculo
   Escenario: Agendar cita para un servicio que no solicita la placa del vehiculo
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita sin incluir la placa del vehiculo para el servicio 'Venta'
     Entonces debe ver que la cita fue agendada de forma exitosa
 
-  @camposObligatorios
   Escenario: Agendar cita con campos obligatorios
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita diligenciando los campos requeridos para el servicio Lavado de carro
     Entonces debe ver que la cita fue agendada de forma exitosa
 
-  @agendarCitaConComentario
   Escenario: Agendar cita incluyendo un comentario
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita incluyendo un comentario para el servicio Lavado de carro

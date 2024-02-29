@@ -45,9 +45,9 @@ public class AgendarCitaPage {
     public static final Target TXT_FECHA_REQUERIDA = Target.the("Ingresa la fecha requerida para la cita")
             .located(By.id("agendarCitaDatePicker"));
     public static final Target LST_HORARIO_DISPONIBLE = Target.the("Selecciona el horario disponible")
-            .locatedBy("(//span[@class='select2-selection select2-selection--single'])[3]");
+            .locatedBy("//span[@id='select2-idHorasCitasDisponibles-container' or @id='select2-horaCita-container']/following-sibling::span");
     public static final Target LST_HORA_SELECCIONADA = Target.the("Selecciona la hora para la cita")
-            .locatedBy("//ul[@id='select2-idHorasCitasDisponibles-results']/child::li[3]");
+            .locatedBy("//ul[@id='select2-idHorasCitasDisponibles-results' or @id='select2-horaCita-results']/child::li[3]");
     public static final Target BTN_GUARDAR = Target.the("Selecciona el bot\u00F3n guardar")
             .locatedBy("//button[contains(text(),'Guardar')]");
     public static final Target LBL_CONFIRMACION_DE_CITA = Target.the("El mensaje de confirmaci\u00F3n de la cita")
