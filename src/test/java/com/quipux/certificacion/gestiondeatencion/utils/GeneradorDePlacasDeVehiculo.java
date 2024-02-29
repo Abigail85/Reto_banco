@@ -13,8 +13,9 @@ public class GeneradorDePlacasDeVehiculo {
         String nuevaCadena = "";
         SecureRandom random = new SecureRandom();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             nuevaCadena = nuevaCadena + caracteres[random.nextInt(caracteres.length)];
+        }
 
         return nuevaCadena;
     }
@@ -24,8 +25,9 @@ public class GeneradorDePlacasDeVehiculo {
         String nuevoNumero = "";
         SecureRandom random = new SecureRandom();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             nuevoNumero = nuevoNumero + numeros[random.nextInt(numeros.length)];
+        }
 
         return nuevoNumero;
     }
@@ -35,8 +37,9 @@ public class GeneradorDePlacasDeVehiculo {
         String numeroDocumento = "";
         SecureRandom random = new SecureRandom();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
             numeroDocumento = numeroDocumento + digitos[random.nextInt(digitos.length)];
+        }
 
         return numeroDocumento;
     }
