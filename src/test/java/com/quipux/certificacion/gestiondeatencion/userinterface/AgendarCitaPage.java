@@ -11,7 +11,7 @@ public class AgendarCitaPage {
     public static final Target TXT_INGRESAR_SUB_SEDE = Target.the("Ingresa la sub-sede para agendar la cita")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_SUB_SEDE = Target.the("Selecciona la sub sede requerida")
-            .locatedBy("//li[contains(text(),'sh subsede 1')]");
+            .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target DDL_TIPO_DE_DOCUMENTO = Target.the("Lista de tipos de documentos")
             .located(By.id("select2-tipoDocumento-container"));
     public static final Target TXT_TIPO_DE_DOCUMENTO = Target.the("Campo para ingresar el tipo de documento del solicitante")
@@ -58,6 +58,6 @@ public class AgendarCitaPage {
             .locatedBy("(//label[contains(text(),'Tipo de documento')])[1]");
     public static final Target TXT_SIGLA = Target.the("Ingresa la sigla del solicitante")
             .located(By.id("juridica"));
-    public static final Target LBL_AGENDAR_CITA = Target.the("Label que contiene el texto de agentdar cita")
+    public static final Target LBL_AGENDAR_CITA = Target.the("Label que contiene el texto de agendar cita")
             .locatedBy("//div[@roles='ROLE_ADMON_CITAS_AGENDADA_M']/descendant::h3");
 }

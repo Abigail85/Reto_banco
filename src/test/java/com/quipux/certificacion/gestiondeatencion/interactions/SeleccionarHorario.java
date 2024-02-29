@@ -1,5 +1,7 @@
 package com.quipux.certificacion.gestiondeatencion.interactions;
 
+import groovy.lang.DelegatesTo;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -7,6 +9,7 @@ import net.serenitybdd.screenplay.actions.Click;
 
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LST_HORARIO_DISPONIBLE;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LST_HORA_SELECCIONADA;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.ReagendarCitaPage.LST_REASIGNAR_HORA;
 
 public class SeleccionarHorario {
 
@@ -19,4 +22,5 @@ public class SeleccionarHorario {
                             Click.on(LST_HORA_SELECCIONADA));
                 });
     }
+
 }

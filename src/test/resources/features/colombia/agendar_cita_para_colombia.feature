@@ -61,3 +61,8 @@ Característica: Agendar citas por medio de la pagina web
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita incluyendo un comentario para el servicio Lavado de carro
     Entonces debe ver que la cita fue agendada de forma exitosa
+
+  Escenario: Reagendar cita
+    Dado que el usuario se encuentra en la pagina web de Shopping GA
+    Cuando reagenda la cita para el servicio 'Lavado de carro'
+    Entonces debe ver que la cita fue reagendada de forma exitosa

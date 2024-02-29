@@ -120,8 +120,9 @@ public class AgendarCitaBuilder implements Builder<AgendarCita> {
     }
 
     private void crearConstructor(List<Map<String, String>> datosDeUsuario) {
-        for (Map<String, String> datoDeUsuario : datosDeUsuario)
+        for (Map<String, String> datoDeUsuario : datosDeUsuario) {
             usuarios.add(new AgendarCitaBuilder(datoDeUsuario));
+        }
     }
 
     @Override
