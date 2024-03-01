@@ -11,7 +11,7 @@ public class ReagendarCitaPage {
     public static final Target LST_REASIGNAR_HORA = Target.the("Selecciona el horario disponible")
             .located(By.xpath("//span[contains(@class, 'select2-selection') and contains(@id, 'select2-horaCita')]"));
     public static final Target LST_MOTIVO = Target.the("Abre la lista de opciones de motivo")
-            .locatedBy("#select2-motivoReasignar-container");
+            .locatedBy("//span[@id='select2-motivoReasignar-container']");
     public static final Target TXT_MOTIVO = Target.the("Campo para buscar el motivo")
             .locatedBy("(//input[@role='textbox'])[1]");
     public static final Target LST_MOTIVO_SELECT = Target.the("Selecciona el motivo")

@@ -62,14 +62,12 @@ Característica: Agendar citas por medio de la pagina web
     Cuando agenda una cita incluyendo un comentario para el servicio Lavado de carro
     Entonces debe ver que la cita fue agendada de forma exitosa
 
-    @Reagendar_Cita
   Escenario: Reagendar cita
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando reagenda la cita para el servicio 'Lavado de carro'
     Entonces debe ver que la cita fue reagendada de forma exitosa
 
-    @Cancelar_cita
   Escenario: Cancelar cita
     Dado  que el usuario se encuentra en la pagina web de Shopping GA
     Cuando cancela una cita para el servicio Lavado de carro
-    Entonces debe ver que la cita fue cancelada exitosamente
+    Entonces debe ver que la cita fue cancelada de forma exitosa

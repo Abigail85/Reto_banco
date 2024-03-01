@@ -1,9 +1,6 @@
 package com.quipux.certificacion.gestiondeatencion.stepdefinitions;
 
-import com.quipux.certificacion.gestiondeatencion.tasks.AgendaLaCita;
-import com.quipux.certificacion.gestiondeatencion.tasks.AgregarMultiplesServicios;
-import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
-import com.quipux.certificacion.gestiondeatencion.tasks.ReagendarCitaServicio;
+import com.quipux.certificacion.gestiondeatencion.tasks.*;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -17,6 +14,7 @@ import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarC
 import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.deUsuario;
 import static com.quipux.certificacion.gestiondeatencion.model.builders.ReagendarCitaBuilder.conLosDatosDeReagendarCita;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.LBL_CONFIRMACION_DE_CITA;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.CancelarCitaPage.LBL_CANCELAR_CITA;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.ReagendarCitaPage.LBL_REAGENDAR_CITA;
 import static com.quipux.certificacion.gestiondeatencion.utils.UtileriaCsv.obtenerDatosDeCsv;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -118,7 +116,12 @@ public class AgendarCitaStepDefinitions {
     }
 
     @Cuando("^cancela una cita para el servicio (.*)$")
-    public void cancelaUnaCitaParaElServicio() {
+    public void cancelaUnaCitaParaElServicio(String tipoDeServicio) throws IOException {
+        theActorInTheSpotlight()
+                .attemptsTo(
+                        AgendaLaCita.paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", tipoDeServicio)).build()),
+                        CancelarCitaServicio.paraCancelarUnServicio(conLosDatosDeReagendarCita(obtenerDatosDeCsv("cancelar_cita", tipoDeServicio)).build())
+                );
     }
 
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
@@ -131,7 +134,8 @@ public class AgendarCitaStepDefinitions {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_REAGENDAR_CITA).text().isNotEmpty());
     }
 
-    @Entonces("debe ver que la cita fue cancelada exitosamente")
-    public void debeVerQueLaCitaFueCanceladaExitosamente() {
+    @Entonces("debe ver que la cita fue cancelada de forma exitosa")
+    public void debeVerQueLaCitaFueCanceladaDeFormaExitosa() {
+        theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CANCELAR_CITA).text().isNotEmpty());
     }
 }
