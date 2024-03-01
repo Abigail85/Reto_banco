@@ -1,5 +1,6 @@
 package com.quipux.certificacion.gestiondeatencion.tasks;
 
+import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -19,8 +20,8 @@ public class AgregarServicio {
     public static Performable requerido(String entidadPrestadoraDeServicio, String servicio) {
         return Task.where("{0} agrega el servicio  para la cita",
                 actor -> {
+                    new InternalSystemClock().pauseFor(1000);
                     actor.attemptsTo(
-                            WaitUntil.the(BTN_AGREGAR_SERVICIO, isPresent()).forNoMoreThan(3000).milliseconds(),
                             Click.on(BTN_AGREGAR_SERVICIO),
                             WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000)),
                             Click.on(DDL_ENTIDAD_PRESTADORA_DE_SERVICIO).afterWaitingUntilEnabled(),
