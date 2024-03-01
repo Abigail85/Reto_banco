@@ -3,6 +3,7 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
 import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
+import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.*;
@@ -23,7 +24,9 @@ public class AgendaLaCita {
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
-                            Click.on(BTN_AGENDAR_CITA),
+                            Click.on(BTN_AGENDAR_CITA));
+                    new InternalSystemClock().pauseFor(1000);
+                    actor.attemptsTo(
                             SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),

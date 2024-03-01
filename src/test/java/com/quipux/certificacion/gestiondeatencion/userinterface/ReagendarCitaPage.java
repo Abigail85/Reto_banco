@@ -18,6 +18,6 @@ public class ReagendarCitaPage {
             .locatedBy("//li[contains(text(),'{0}')]");
     public static final Target BTN_SI = Target.the("Bot\u00F3n para continuar")
             .locatedBy("//button[contains(@class, 'btn-primary') and contains(@ng-click, 'reasignarCita')]");
-    public static final Target LBL_REAGENDAR_CITA = Target.the("mensaje de validac\u00F3n reagendar cita")
-            .locatedBy("//div[contains(text(),'se reasign\u00F3 satisfactoriamente para')]");
+    public static final Target LBL_REAGENDAR_CITA = Target.the("Mensaje de validac\u00F3n reagendar cita")
+            .locatedBy("//div[contains(text(),'La cita')]");
 }

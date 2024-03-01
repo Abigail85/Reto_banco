@@ -127,7 +127,7 @@ public class AgendarCitaStepDefinitions {
     }
 
     @Entonces("debe ver que la cita fue reagendada de forma exitosa")
-    public void debeVerQueLaCitaFueReagendadaDeFormaExitosamente() {
+    public void debeVerQueLaCitaFueReagendadaDeFormaExitosa() {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_REAGENDAR_CITA).text().isNotEmpty());
     }
 
