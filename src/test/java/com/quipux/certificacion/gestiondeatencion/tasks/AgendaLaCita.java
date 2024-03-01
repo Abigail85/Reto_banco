@@ -3,6 +3,7 @@ package com.quipux.certificacion.gestiondeatencion.tasks;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarHorario;
 import com.quipux.certificacion.gestiondeatencion.interactions.SeleccionarSubSede;
 import com.quipux.certificacion.gestiondeatencion.model.AgendarCita;
+import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.*;
@@ -17,13 +18,17 @@ import static com.quipux.certificacion.gestiondeatencion.userinterface.ComunesPa
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotPresent;
 
 public class AgendaLaCita {
+    private static final int TIEMPO = 1000;
+    private static final int TIEMPO_ESPERA = 3000;
 
     public static Performable paraUnServicioRequerido(AgendarCita usuario) {
         return Task.where("{0} completa el formulario para agendar cita",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
-                            Click.on(BTN_AGENDAR_CITA),
+                            Click.on(BTN_AGENDAR_CITA));
+                    new InternalSystemClock().pauseFor(TIEMPO);
+                    actor.attemptsTo(
                             SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
@@ -33,7 +38,7 @@ public class AgendaLaCita {
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                     actor.remember("confirmacionCita", LBL_CONFIRMACION_DE_CITA.resolveFor(actor).getText());
                 }
@@ -55,7 +60,7 @@ public class AgendaLaCita {
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                 }
         );
@@ -77,7 +82,7 @@ public class AgendaLaCita {
                             Enter.theValue(agendarCita.getComentario()).into(By.id("comentarios")),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                 }
         );
@@ -98,7 +103,7 @@ public class AgendaLaCita {
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                 }
         );
