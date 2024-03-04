@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaBrasilPage.TXT_INDICATIVO_NUMERO_DE_TELEFONO;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaBrasilPage.TXT_NUMERO_DE_CELULAR;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.*;
 import static com.quipux.certificacion.gestiondeatencion.utils.GeneradorDePlacasDeVehiculo.generarNumeroDocumento;
 
@@ -48,6 +50,25 @@ public class DiligenciarFormulario {
                             Enter.theValue(usuario.getCorreoElectronico()).into(TXT_CORREO_ELECTRONICO),
                             Enter.theValue(usuario.getNumeroDeTelefono()).into(TXT_NUMERO_TELEFONICO),
                             Enter.theValue(usuario.getDireccionResidencia()).into(TXT_DIRECCION_DE_RESIDENCIA)
+                    );
+                }
+        );
+    }
+
+    public static Performable brasileno(AgendarCita agendarCita) {
+        return Task.where("{0} diligencia el formulario del solicitante",
+                actor -> {
+                    actor.attemptsTo(
+                            Click.on(DDL_TIPO_DE_DOCUMENTO),
+                            Enter.theValue(agendarCita.getTipoDocumento()).into(TXT_TIPO_DE_DOCUMENTO),
+                            Click.on(LST_DOCUMENTO.of(agendarCita.getTipoDocumento())),
+                            Enter.theValue(generarNumeroDocumento()).into(TXT_NUMERO_DOCUMENTO),
+                            Click.on(TXT_PRIMER_NOMBRE),
+                            Enter.theValue(agendarCita.getPrimerNombre()).into(TXT_PRIMER_NOMBRE),
+                            Enter.theValue(agendarCita.getPrimerApellido()).into(TXT_PRIMER_APELLIDO),
+                            Enter.theValue(agendarCita.getCorreoElectronico()).into(TXT_CORREO_ELECTRONICO),
+                            Enter.theValue("55").into(TXT_INDICATIVO_NUMERO_DE_TELEFONO),
+                            Enter.theValue("3146834995").into(TXT_NUMERO_DE_CELULAR)
                     );
                 }
         );
