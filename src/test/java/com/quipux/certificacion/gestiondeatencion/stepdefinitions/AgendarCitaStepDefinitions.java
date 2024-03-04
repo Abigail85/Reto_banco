@@ -117,6 +117,14 @@ public class AgendarCitaStepDefinitions {
                 );
     }
 
+    @Cuando("agenda una cita cambiando los datos para el servicio {string}")
+    public void agendaUnaCitaCambiandoLosDatosParaElServicio(String servicio) throws IOException {
+        theActorInTheSpotlight().attemptsTo(
+                AgendaLaCita
+                        .paraOtroNumeroDeDocumento(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_sin_placa_de_vehiculo", servicio))
+                                .build()));
+    }
+
     @Entonces("debe ver que la cita fue agendada de forma exitosa")
     public void debeVerQueLaCitaFueAgendadaDeFormaExitosa() {
         theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_CONFIRMACION_DE_CITA).text().isNotEmpty());
