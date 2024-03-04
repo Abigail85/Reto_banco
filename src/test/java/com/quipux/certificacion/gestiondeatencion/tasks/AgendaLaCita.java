@@ -108,4 +108,27 @@ public class AgendaLaCita {
                 }
         );
     }
+
+    public static Performable paraOtroNumeroDeDocumento(AgendarCita agendarCita) {
+        return Task.where("{0} completa el formulario para agendar la cita",
+                actor -> {
+                    actor.attemptsTo(
+                            SeleccionarAgendarCita.paraElServicio(),
+                            Click.on(BTN_AGENDAR_CITA));
+                    new InternalSystemClock().pauseFor(TIEMPO);
+                    actor.attemptsTo(
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(agendarCita.getSubSede()),
+                            DiligenciarFormulario.delSolicitante(agendarCita),
+                            Click.on(BTN_CONTINUAR),
+                            AgregarServicio.cambiandoLaInformacionDeUsuario(agendarCita.getEntidadPrestadora(), agendarCita.getServicio()),
+                            Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
+                            Enter.theValue(agendarCita.getFechaCita()).into(TXT_FECHA_REQUERIDA),
+                            SeleccionarHorario.disponible(),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
+                    );
+                }
+        );
+    }
 }

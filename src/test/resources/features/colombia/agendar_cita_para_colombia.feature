@@ -70,4 +70,4 @@ Característica: Agendar citas por medio de la pagina web
   Escenario: Agendar cita para un usuario diferente
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita cambiando los datos para el servicio 'Venta'
-    Entonces debe ver que la cita fue reagendada de forma exitosa
+    Entonces debe ver que la cita fue agendada de forma exitosa
