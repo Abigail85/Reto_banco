@@ -4,12 +4,12 @@ Característica: Agende consultas pelo site
   Quero poder agendar consultas
   Para processar serviços relacionados ao meu veículo
 
-  Cenario: Agendar cita exitosa para un usuario con CPF
-    Dado que o usuário está no site do Shopping GA
-    Quando agenda una cita para un usuario identificación para el servicio Traspaso de vehículo blindado
-    Entao debe ver que la cita fue agendada de forma exitosa
-
   Cenario: Agendar cita exitosa para un usuario con CNPJ
+    Dado que o usuário está no site do Shopping GA
+    Quando agendar uma consulta para um usuário de identificação para o serviço 'Lavado de carro'
+    Entao Você deverá ver que o compromisso foi agendado com sucesso
+
+  Cenario: Agendar cita exitosa para un usuario con CPF
     Dado que o usuário está no site do Shopping GA
     Quando agenda una cita para un usuario identificación para el servicio Traspaso de vehículo blindado
     Entao debe ver que la cita fue agendada de forma exitosa
