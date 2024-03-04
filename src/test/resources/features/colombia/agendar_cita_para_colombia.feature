@@ -88,3 +88,8 @@ Característica: Agendar citas por medio de la pagina web
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando agenda una cita cambiando los datos para el servicio 'Venta'
     Entonces debe ver que la cita fue agendada de forma exitosa
+
+  Escenario: Cancelar cita
+    Dado  que el usuario se encuentra en la pagina web de Shopping GA
+    Cuando cancela una cita para el servicio Lavado de carro
+    Entonces debe ver que la cita fue cancelada de forma exitosa

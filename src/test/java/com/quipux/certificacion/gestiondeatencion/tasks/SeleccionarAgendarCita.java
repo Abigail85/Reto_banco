@@ -1,5 +1,6 @@
 package com.quipux.certificacion.gestiondeatencion.tasks;
 
+import net.serenitybdd.model.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;

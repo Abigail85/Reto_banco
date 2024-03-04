@@ -26,9 +26,7 @@ public class AgendaLaCita {
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
-                            Click.on(BTN_AGENDAR_CITA));
-                    new InternalSystemClock().pauseFor(TIEMPO);
-                    actor.attemptsTo(
+                            Click.on(BTN_AGENDAR_CITA),
                             SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
