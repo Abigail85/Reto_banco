@@ -115,6 +115,14 @@ public class AgendarCitaStepDefinitions {
                 );
     }
 
+    @Cuando("agenda una cita cambiando los datos para el servicio {string}")
+    public void agendaUnaCitaCambiandoLosDatosParaElServicio(String servicio) throws IOException {
+        theActorInTheSpotlight().attemptsTo(
+                AgendaLaCita
+                        .paraOtroNumeroDeDocumento(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita_sin_placa_de_vehiculo", servicio))
+                                .build()));
+    }
+
     @Cuando("^cancela una cita para el servicio (.*)$")
     public void cancelaUnaCitaParaElServicio(String tipoDeServicio) throws IOException {
         theActorInTheSpotlight()

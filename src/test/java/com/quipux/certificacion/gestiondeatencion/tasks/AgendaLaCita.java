@@ -18,15 +18,15 @@ import static com.quipux.certificacion.gestiondeatencion.userinterface.ComunesPa
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotPresent;
 
 public class AgendaLaCita {
+    private static final int TIEMPO = 1000;
+    private static final int TIEMPO_ESPERA = 3000;
 
     public static Performable paraUnServicioRequerido(AgendarCita usuario) {
         return Task.where("{0} completa el formulario para agendar cita",
                 actor -> {
                     actor.attemptsTo(
                             SeleccionarAgendarCita.paraElServicio(),
-                            Click.on(BTN_AGENDAR_CITA));
-                    new InternalSystemClock().pauseFor(1000);
-                    actor.attemptsTo(
+                            Click.on(BTN_AGENDAR_CITA),
                             SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(usuario.getSubSede()),
                             DiligenciarFormulario.delSolicitante(usuario),
                             Click.on(BTN_CONTINUAR),
@@ -36,7 +36,7 @@ public class AgendaLaCita {
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                     actor.remember("confirmacionCita", LBL_CONFIRMACION_DE_CITA.resolveFor(actor).getText());
                 }
@@ -58,7 +58,7 @@ public class AgendaLaCita {
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                 }
         );
@@ -80,7 +80,7 @@ public class AgendaLaCita {
                             Enter.theValue(agendarCita.getComentario()).into(By.id("comentarios")),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                 }
         );
@@ -101,7 +101,30 @@ public class AgendaLaCita {
                             SeleccionarHorario.disponible(),
                             Scroll.to(BTN_GUARDAR),
                             Click.on(BTN_GUARDAR),
-                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(3000))
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
+                    );
+                }
+        );
+    }
+
+    public static Performable paraOtroNumeroDeDocumento(AgendarCita agendarCita) {
+        return Task.where("{0} completa el formulario para agendar la cita",
+                actor -> {
+                    actor.attemptsTo(
+                            SeleccionarAgendarCita.paraElServicio(),
+                            Click.on(BTN_AGENDAR_CITA));
+                    new InternalSystemClock().pauseFor(TIEMPO);
+                    actor.attemptsTo(
+                            SeleccionarSubSede.paraSeleccionarSubSedeAgendarCita(agendarCita.getSubSede()),
+                            DiligenciarFormulario.delSolicitante(agendarCita),
+                            Click.on(BTN_CONTINUAR),
+                            AgregarServicio.cambiandoLaInformacionDeUsuario(agendarCita.getEntidadPrestadora(), agendarCita.getServicio()),
+                            Click.on(TXT_FECHA_REQUERIDA).afterWaitingUntilEnabled(),
+                            Enter.theValue(agendarCita.getFechaCita()).into(TXT_FECHA_REQUERIDA),
+                            SeleccionarHorario.disponible(),
+                            Scroll.to(BTN_GUARDAR),
+                            Click.on(BTN_GUARDAR),
+                            WaitUntil.the(IMG_CARGANDO, isNotPresent()).forNoMoreThan(Duration.ofMillis(TIEMPO_ESPERA))
                     );
                 }
         );
