@@ -18,7 +18,6 @@ public class SeleccionarAsignarTurno {
                             Click.on(LST_ASIGNAR_TURNOS),
                             Click.on(BTN_CERRAR)
                     );
-
                 }
         );
     }

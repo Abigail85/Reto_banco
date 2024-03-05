@@ -9,9 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = "src/test/resources/features/colombia/asignar_turno.feature",
         glue = {"com.quipux.certificacion.gestiondeatencion"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        // tags = "@AsignarTurnoColombia"
-        tags = "@AsignarTurnoConPreferenciaColombia"
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class AsignarTurno {
 }

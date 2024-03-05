@@ -5,7 +5,6 @@ Característica: Asignar Turnos por medio de la pagina web
   Quiero poder asignar turnos
   Para gestionar servicios
 
-  @AsignarTurnoColombia
   Escenario: Asignar turno exitoso
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando asigna un turno para el servicio 'Lavado de carro'
@@ -22,7 +21,6 @@ Característica: Asignar Turnos por medio de la pagina web
     Dado que el usuario se encuentra en la pagina web de Shopping GA
     Cuando asigna varios turnos en una sesion
     Entonces deberia ver que todos los turnos fueron asignados de forma exitosa
-
 
   Escenario: Asignación con datos incompletos
     Dado que el usuario se encuentra en la pagina web de Shopping GA

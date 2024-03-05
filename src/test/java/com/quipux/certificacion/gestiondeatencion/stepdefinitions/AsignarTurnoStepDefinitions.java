@@ -1,13 +1,9 @@
 package com.quipux.certificacion.gestiondeatencion.stepdefinitions;
 
-import com.quipux.certificacion.gestiondeatencion.tasks.AgendaLaCita;
 import com.quipux.certificacion.gestiondeatencion.tasks.AsignarElTurno;
 import com.quipux.certificacion.gestiondeatencion.tasks.AsignarTurnoPreferencial;
-import com.quipux.certificacion.gestiondeatencion.tasks.Autenticarse;
 import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
-import net.serenitybdd.screenplay.ensure.Ensure;
 
 import java.io.IOException;
 
@@ -21,7 +17,7 @@ public class AsignarTurnoStepDefinitions {
     public void asignaUnTurnoParaElServicio(String tipoDeServicio) throws IOException {
         theActorInTheSpotlight().attemptsTo(
                 AsignarElTurno
-                        .paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("agendar_cita", tipoDeServicio))
+                        .paraUnServicioRequerido(conLosDatosDelUsuario(obtenerDatosDeCsv("asignar_turno", tipoDeServicio))
                                 .build()));
     }
 
@@ -33,9 +29,7 @@ public class AsignarTurnoStepDefinitions {
                                 .build()));
     }
 
-
     @Entonces("debe ver que el turno fue asignado de forma exitosa")
     public void debeVerQueElTurnoFueAsignadoDeFormaExitosa() {
-        //theActorInTheSpotlight().attemptsTo(Ensure.that(MENSAJE_EXITOSO).text().isNotEmpty());
     }
 }
