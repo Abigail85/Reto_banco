@@ -4,10 +4,12 @@ import com.quipux.certificacion.gestiondeatencion.tasks.AsignarElTurno;
 import com.quipux.certificacion.gestiondeatencion.tasks.AsignarTurnoPreferencial;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.screenplay.ensure.Ensure;
 
 import java.io.IOException;
 
 import static com.quipux.certificacion.gestiondeatencion.model.builders.AgendarCitaBuilder.conLosDatosDelUsuario;
+import static com.quipux.certificacion.gestiondeatencion.userinterface.AsignarTurnoPage.LBL_TICKET_ASIGNAR_TURNO;
 import static com.quipux.certificacion.gestiondeatencion.utils.UtileriaCsv.obtenerDatosDeCsv;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -31,5 +33,6 @@ public class AsignarTurnoStepDefinitions {
 
     @Entonces("debe ver que el turno fue asignado de forma exitosa")
     public void debeVerQueElTurnoFueAsignadoDeFormaExitosa() {
+        theActorInTheSpotlight().attemptsTo(Ensure.that(LBL_TICKET_ASIGNAR_TURNO).isDisplayed());
     }
 }

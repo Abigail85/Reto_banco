@@ -16,4 +16,6 @@ public class AsignarTurnoPage {
             .locatedBy("//button[@class='btn btn-outline-primary btn-block ng-binding'][contains(.,'Cerrar')]");
     public static final Target BTN_REGISTRAR_ATENCION = Target.the("Selecciona el bot\u00F3n registrar atenci\u00F3n")
             .locatedBy("//button[@ng-click='asignarTurnoController.validarFormulario()']");
+    public static final Target LBL_TICKET_ASIGNAR_TURNO = Target.the("Ticket asignado al asignar un turno")
+            .located(By.id("ticket"));
 }
