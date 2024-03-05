@@ -7,7 +7,7 @@ public class AgregarServicioPage {
     public static final Target BTN_AGREGAR_SERVICIO = Target.the("Bot\u00F3n para agregar servicio")
             .locatedBy("//button[contains(text(),'Agregar servicio')]");
     public static final Target DDL_ENTIDAD_PRESTADORA_DE_SERVICIO = Target.the("Lista de entidades prestadoras de servicio")
-            .locatedBy("(//span[@id='select2-entidadPrestadora-container'])[1]");
+            .locatedBy("(//span[@id='select2-entidadPrestadora-container'])[1]|(//span[@id='select2-tipoEntidad-container'])[1]");
     public static final Target TXT_ENTIDAD_PRESTADORA_DE_SERVICIO = Target.the("Campo para ingresar la entidad prestadora del servicio")
             .locatedBy("//input[@class='select2-search__field']");
     public static final Target LST_ENTIDAD = Target.the("Entidad prestadora de servicio")

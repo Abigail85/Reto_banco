@@ -9,7 +9,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import static com.quipux.certificacion.gestiondeatencion.userinterface.AgendarCitaPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class SeleccionarSubSede implements Performable {
+public class    SeleccionarSubSede implements Performable {
     private String subSede;
 
     public SeleccionarSubSede(String subSede) {

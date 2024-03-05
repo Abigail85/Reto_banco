@@ -7,9 +7,11 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         plugin = {"pretty"},
-        features = "src/test/resources/features/asignar_turno.feature",
+        features = "src/test/resources/features/colombia/asignar_turno.feature",
         glue = {"com.quipux.certificacion.gestiondeatencion"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE
+        snippets = CucumberOptions.SnippetType.CAMELCASE,
+        // tags = "@AsignarTurnoColombia"
+        tags = "@AsignarTurnoConPreferenciaColombia"
 )
 public class AsignarTurno {
 }

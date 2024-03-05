@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         plugin = {"pretty"},
-        features = "src/test/resources/features/brasil/agendar_cita_para_brasil.feature",
+        features = "src/test/resources/features/brasil/agendar_cita_brasil.feature",
         glue = {"com.quipux.certificacion.gestiondeatencion"},
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
