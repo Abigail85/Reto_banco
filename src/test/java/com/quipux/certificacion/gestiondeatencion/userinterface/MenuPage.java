@@ -7,5 +7,7 @@ public class MenuPage {
             .locatedBy("//ul[@id='_menu']/descendant::li[contains(@roles,'ROLE_GESTION_ATENCION')]");
     public static final Target LST_AGENDAR_CITAS = Target.the("Opci\u00F3n Agendar Citas")
             .locatedBy("(//li[@roles='ROLE_ADMON_CITAS_AGENDADA_C'])[1]/child::a");
+    public static final Target LST_ASIGNAR_TURNOS = Target.the("Opci\u00F3n Asignar Turnos")
+            .locatedBy("(//li[@roles='ROLE_ADMON_ASIGNACION_TURNOS_M'])[1]/child::a");
 
 }
