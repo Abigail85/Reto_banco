@@ -39,6 +39,7 @@ dependencies {
             "org.slf4j:slf4j-simple:${slf4jVersion}",
             "org.junit.platform:junit-platform-suite:1.10.2",
             "io.cucumber:cucumber-junit-platform-engine:7.15.0"
+    testImplementation 'org.jetbrains:annotations:24.0.0'
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 

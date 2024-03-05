@@ -22,4 +22,10 @@ public class AgregarServicioPage {
             .locatedBy("//input[@id='placa']");
     public static final Target BTN_AGREGAR_SERVICIO_REQUERIDO = Target.the("")
             .locatedBy("//div[@class='modal-footer']/child::button[contains(text(),'Agregar')]");
+    public static final Target CHK_TIPO_Y_DOCUMENTO_DIFERENTES = Target.the("Check-box indicando que el tipo y n\u00FAmero de documento del solicitante son diferentes")
+            .locatedBy("//input[@id='checkboxDatosSolicitante']");
+    public static final Target DDL_TIPO_DE_DOCUMENTO = Target.the("Selecciona el tipo de documento del solicitante")
+            .locatedBy("//span[@id='select2-tipoDocumentoModal-container']");
+    public static final Target TXT_NUMERO_DE_DOCUMENTO = Target.the("Ingresa el n\u00FAmero de documento del solicitante")
+            .located(By.id("nroDocumento"));
 }
