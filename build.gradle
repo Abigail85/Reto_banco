@@ -1,5 +1,5 @@
 plugins {
-    id "net.serenity-bdd.serenity-gradle-plugin" version "4.0.46"
+    id "net.serenity-bdd.serenity-gradle-plugin" version "4.0.30"
     id 'java'
     id 'idea'
     id 'eclipse'
@@ -18,7 +18,7 @@ java {
 }
 
 ext {
-    serenityCoreVersion = '4.0.46'
+    serenityCoreVersion = '4.0.30'
     seleniumVersion = '4.17.0'
     junitVersion = '5.10.0'
     assertJVersion = '3.22.0'
@@ -32,15 +32,22 @@ dependencies {
             "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            "io.rest-assured:rest-assured:5.4.0",
             "org.seleniumhq.selenium:selenium-java:${seleniumVersion}",
             "org.junit.vintage:junit-vintage-engine:${junitVersion}",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
             "org.assertj:assertj-core:${assertJVersion}",
             "org.slf4j:slf4j-simple:${slf4jVersion}",
+            'org.apache.logging.log4j:log4j-core:2.23.1',
             "org.junit.platform:junit-platform-suite:1.10.2",
-            "io.cucumber:cucumber-junit-platform-engine:7.15.0"
+            "io.cucumber:cucumber-junit-platform-engine:7.15.0",
+            "com.oracle.database.jdbc:ojdbc11:23.3.0.23.09"
     testImplementation 'org.jetbrains:annotations:24.0.0'
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testCompileOnly 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+
 }
 
 test {
@@ -48,6 +55,10 @@ test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
 }
 
 gradle.startParameter.continueOnFailure = true
